@@ -81,14 +81,14 @@
 
 <meta name="description" content="Elastic Stack概述 elasticsearch是数据存储,查询与分析 kibana是数据探索与可视化分析 Beats,Logstash是数据收集与处理elasticsearch 安装elasticsearch进入elasticsearch官网,下载对应自己电脑型号和版本的压缩包,解压,进入bin目录,执行elasticsearch,启动elasticsearch  elasticsea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elastic Stack">
+<meta property="og:title" content="ghost">
 <meta property="og:url" content="http://yoursite.com/2018/04/24/Elastic-Stack/index.html">
 <meta property="og:site_name" content="ghost">
 <meta property="og:description" content="Elastic Stack概述 elasticsearch是数据存储,查询与分析 kibana是数据探索与可视化分析 Beats,Logstash是数据收集与处理elasticsearch 安装elasticsearch进入elasticsearch官网,下载对应自己电脑型号和版本的压缩包,解压,进入bin目录,执行elasticsearch,启动elasticsearch  elasticsea">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-24T13:28:13.161Z">
+<meta property="og:updated_time" content="2018-04-24T14:50:36.212Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elastic Stack">
+<meta name="twitter:title" content="ghost">
 <meta name="twitter:description" content="Elastic Stack概述 elasticsearch是数据存储,查询与分析 kibana是数据探索与可视化分析 Beats,Logstash是数据收集与处理elasticsearch 安装elasticsearch进入elasticsearch官网,下载对应自己电脑型号和版本的压缩包,解压,进入bin目录,执行elasticsearch,启动elasticsearch  elasticsea">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>Elastic Stack | ghost</title>
+  <title> | ghost</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Elastic Stack</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -318,10 +318,9 @@
 </li>
 <li><p>如何判断哪个是主节点,哪个是从节点<br>在浏览器上输入<a href="http://127.0.0.1:7200/_cat/nodes?v" target="_blank" rel="noopener">http://127.0.0.1:7200/_cat/nodes?v</a><br>然后出来<br>ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name<br>127.0.0.1   28    42  13              mdi       -      ZSq9WKC<br>127.0.0.1   28    42  13              mdi       -      V8BTpaW<br>127.0.0.1   29    42  13              mdi       <em>      Z_C-ibU<br>注:</em>代表主节点</p>
 </li>
-<li><p>如何查看集群的状态消息<br>在浏览器上输入<br><a href="http://127.0.0.1:7200/_cluster/stats" target="_blank" rel="noopener">http://127.0.0.1:7200/_cluster/stats</a><br>然后出现下面就代表成功<br>{“_nodes”:{“total”:3,”successful”:3,”failed”:0},”cluster_name”:”elasticsearch”,”timestamp”:1524451499638,”status”:”green”,”indices”:{“count”:0,”shards”:{},”docs”:{“count”:0,”deleted”:0},”store”:{“size_in_bytes”:0},”fielddata”:{“memory_size_in_bytes”:0,”evictions”:0},”query_cache”:{“memory_size_in_bytes”:0,”total_count”:0,”hit_count”:0,”miss_count”:0,”cache_size”:0,”cache_count”:0,”evictions”:0},”completion”:{“size_in_bytes”:0},”segments”:{“count”:0,”memory_in_bytes”:0,”terms_memory_in_bytes”:0,”stored_fields_memory_in_bytes”:0,”term_vectors_memory_in_bytes”:0,”norms_memory_in_bytes”:0,”points_memory_in_bytes”:0,”doc_values_memory_in_bytes”:0,”index_writer_memory_in_bytes”:0,”version_map_memory_in_bytes”:0,”fixed_bit_set_memory_in_bytes”:0,”max_unsafe_auto_id_timestamp”:-9223372036854775808,”file_sizes”:{}}},”nodes”:{“count”:{“total”:3,”data”:3,”coordinating_only”:0,”master”:3,”ingest”:3},”versions”:[“6.2.4”],”os”:{“available_processors”:24,”allocated_processors”:24,”names”:[{“name”:”Windows 10”,”count”:3}],”mem”:{“total_in_bytes”:50683527168,”free_in_bytes”:33623531520,”used_in_bytes”:17059995648,”free_percent”:66,”used_percent”:34}},”process”:{“cpu”:{“percent”:0},”open_file_descriptors”:{“min”:-1,”max”:-1,”avg”:0}},”jvm”:{“max_uptime_in_millis”:810239,”versions”:[{“version”:”1.8.0_171”,”vm_name”:”Java HotSpot(TM) 64-Bit Server VM”,”vm_version”:”25.171-b11”,”vm_vendor”:”Oracle Corporation”,”count”:3}],”mem”:{“heap_used_in_bytes”:915259056,”heap_max_in_bytes”:3113877504},”threads”:164},”fs”:{“total_in_bytes”:107373129728,”free_in_bytes”:70861139968,”available_in_bytes”:70861139968},”plugins”:[],”network_types”:{“transport_types”:{“netty4”:3},”http_types”:{“netty4”:3}}}}</p>
+<li><p>如何查看集群的状态消息<br>在浏览器上输入<br><a href="http://127.0.0.1:7200/_cluster/stats" target="_blank" rel="noopener">http://127.0.0.1:7200/_cluster/stats</a></p>
 </li>
-<li><p>常用术语<br>1).Document文档数据<br>2).Index索引<br>3).Type索引中的数据类型<br>4).Field字段,文档的属性<br>5).Query DSL查询语法</p>
-<h4 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h4></li>
+<li>常用术语<br>1).Document文档数据<br>2).Index索引<br>3).Type索引中的数据类型<br>4).Field字段,文档的属性<br>5).Query DSL查询语法<h4 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h4></li>
 <li>下载kibana<br>进入<a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">kibana官网</a>下载<br>进入kibana的bin目录下,执行kibana,就启动kibana了</li>
 <li>kibana.yml关键配置说明<br>1).server.host/server.port访问kibana用的地址和端口<br>2).elasticsearch.url待访问elasticsearch的地址</li>
 <li>kibana常用功能说明<br>1).Discover数据搜索查看<br>2).Visualize图表制作<br>3).Dashboard仪表盘制作<br>4).Timelion时序数据的高级可视化分析<br>5).DevTools开发者工具<br>6).Management配置<h4 id="beats"><a href="#beats" class="headerlink" title="beats"></a>beats</h4></li>
