@@ -330,6 +330,7 @@
 </li>
 </ul>
 </li>
+<li>Dynamic Mapping<br><code>es是依靠JSON文档的字段来实现自动识别字段类型</code><br>| Json类型   |  es类型   |<br>| :——– | ——–:|<br>| null      |   忽略    |<br>| boolean   |  boolean |<br>|浮点类型    |  float   |<br>| 整数      |   long   |<br>| object   |   object  |<br>| array    |  由第一个非null值得类型决定 |<br>| string   |   1.匹配为日期则设为date类型(默认开启)2.匹配为数字的话设为float或long类型(默认关闭)3.设为text类型,并附带keyword的子字段|</li>
 </ul>
 
           
