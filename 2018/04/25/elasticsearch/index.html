@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常用术语文档 Document用户存储在es中的数据类型  数据类型 1234567891.字符型:text,keyword2.数值型:long,integer,short,byte,float,half_float,scaled_float3.布尔:boolean4.日期:date5.二进制:binary6.范围类型:integer_range,float_range,long_range,do">
+<meta property="og:type" content="article">
+<meta property="og:title" content="elasticsearch">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/elasticsearch/index.html">
+<meta property="og:site_name" content="ghost">
+<meta property="og:description" content="常用术语文档 Document用户存储在es中的数据类型  数据类型 1234567891.字符型:text,keyword2.数值型:long,integer,short,byte,float,half_float,scaled_float3.布尔:boolean4.日期:date5.二进制:binary6.范围类型:integer_range,float_range,long_range,do">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-25T03:05:14.858Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="elasticsearch">
+<meta name="twitter:description" content="常用术语文档 Document用户存储在es中的数据类型  数据类型 1234567891.字符型:text,keyword2.数值型:long,integer,short,byte,float,half_float,scaled_float3.布尔:boolean4.日期:date5.二进制:binary6.范围类型:integer_range,float_range,long_range,do">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/elasticsearch/"/>
+
+
+
+
+
+  <title>elasticsearch | ghost</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ghost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/elasticsearch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">elasticsearch</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T06:59:57+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h4><p><strong>文档 Document</strong><br><code>用户存储在es中的数据类型</code></p>
+<ul>
+<li><p>数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.字符型:text,keyword</span><br><span class="line">2.数值型:long,integer,short,byte,float,half_float,scaled_float</span><br><span class="line">3.布尔:boolean</span><br><span class="line">4.日期:date</span><br><span class="line">5.二进制:binary</span><br><span class="line">6.范围类型:integer_range,float_range,long_range,double_range,date_range,date_range</span><br><span class="line">注:每个文档有唯一的id标识  </span><br><span class="line">1).自行指定  </span><br><span class="line">2).es自动生成</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>元数据<br><code>用于标注文档的相关信息</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1._index:文档所在的索引名  </span><br><span class="line">2._type:文档所在的类型名</span><br><span class="line">3._id:文档唯一id</span><br><span class="line">4._source:文档的原始Json数据,可以从这里获取每个字段的内容</span><br><span class="line">5._all:整合所有字段内容到该字段,默认禁止</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文档Document API</p>
+<ul>
+<li><p>创建文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">1.指定id创建文档api如下:</span><br><span class="line">PUT /test_index/doc/1</span><br><span class="line">&#123;</span><br><span class="line">    &quot;username&quot;:&quot;hh&quot;,</span><br><span class="line">    &quot;age&quot;:1</span><br><span class="line">&#125;</span><br><span class="line">2.不指定id创建文档api如下:</span><br><span class="line">POST /test_index/doc</span><br><span class="line">&#123;</span><br><span class="line">    &quot;username&quot;:&quot;hh&quot;,</span><br><span class="line">    &quot;age&quot;:1</span><br><span class="line">&#125;</span><br><span class="line">3.es允许一次创建多个文档,从而减少网络传输开销,提升写入速率</span><br><span class="line">POST _bulk</span><br><span class="line">&#123;</span><br><span class="line">    &quot;index&quot;:&#123;</span><br><span class="line">        &quot;_index&quot;:&quot;test_index&quot;,&quot;_type&quot;:&quot;doc&quot;,&quot;id&quot;:&quot;3&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;username&quot;:&quot;hh&quot;,&quot;age&quot;:10</span><br><span class="line">    &#125;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;delete&quot;:&#123;</span><br><span class="line">        &quot;_index&quot;:&quot;test_index&quot;,&quot;_type&quot;:&quot;doc&quot;,&quot;_id&quot;:&quot;3&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;update&quot;:&#123;</span><br><span class="line">        &quot;_id&quot;:&quot;3&quot;,&quot;_index&quot;:&quot;test_index&quot;,&quot;_type&quot;:&quot;doc&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    &quot;doc&quot;:&#123;</span><br><span class="line">        &quot;age&quot;:&quot;20&quot;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1.指定要查询的文档id</span><br><span class="line">GET/test_index/doc/1</span><br><span class="line">2.搜索所有文档,用到_search,如下:</span><br><span class="line">GET /test_index/doc/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;:&#123;</span><br><span class="line">        &quot;term&quot;:&#123;</span><br><span class="line">            &quot;_id&quot;:&quot;1&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">2.es允许一次查询多个文档</span><br><span class="line">GET /_mget</span><br><span class="line">&#123;</span><br><span class="line">    &quot;docs&quot;:&#123;</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_index&quot;:&quot;test_index&quot;,</span><br><span class="line">            &quot;type&quot;:&quot;doc&quot;,</span><br><span class="line">            &quot;_id&quot;:&quot;1&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;_index&quot;:&quot;test_index&quot;,</span><br><span class="line">            &quot;_type&quot;:&quot;doc&quot;,</span><br><span class="line">            &quot;_id&quot;:&quot;2&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新文档</p>
+</li>
+<li>删除文档</li>
+</ul>
+</li>
+</ul>
+<p><strong>索引 Index</strong><br><code>由具有相同字段的文档列表组成</code></p>
+<ul>
+<li>索引中存储具有相同结构的文档(Document)   <ul>
+<li>每个索引都有自己的mapping定义,用于定义字段名和类型  </li>
+</ul>
+</li>
+<li>一个集群可以有多个索引  <ul>
+<li>nginx日志存储的时候可以按照日期每天生成一个索引来存储</li>
+</ul>
+</li>
+<li>索引API<br><code>es有专门的Index API,用于创建,更新,删除索引配置等</code>  <ul>
+<li>创建索引api  <code>PUT/test/index</code>  </li>
+<li>查看现有索引  <code>GET _cat/indices</code>  </li>
+<li>删除索引api  <code>DELETE/test_index</code>  </li>
+</ul>
+</li>
+<li>倒排索引与分词<ul>
+<li>正排索引<code>文档Id到文档内容,单词的关联关系</code></li>
+<li>倒排索引<code>单词到文档Id的关联关系</code><ul>
+<li>单词词典<code>是倒排索引的重要组成</code><ul>
+<li>记录所有文档的单词,一般比较大</li>
+<li>记录单词到倒排列表的关联信息</li>
+</ul>
+</li>
+<li>倒排列表<code>记录了单词对应的文档集合,由倒排索引项组成</code><br>倒排索引项(Posting)主要包含以下信息:<ul>
+<li>文档Id,用于获取原始信息</li>
+<li>单词频率(TF,Term Frequency),记录该单词在该文档中的出现次数,用于后续相关性算分</li>
+<li>位置(Position),记录单词在文档中的分词位置(多个),用于做词语搜索(Phrase Query)</li>
+<li>偏移(Offset),记录单词在文档的开始和结束位置,用于做高亮显示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分词<code>是指将文本转换成一系列单词(term or token)的过程,也可以叫做文本分析,在es中里面称为Analysis</code><br><strong>节点 Node</strong><br><code>一个Elasticsearch的运行实例,是集群的构成单元</code><br><strong>集群 Cluster</strong><br><code>由一个或多个节点组成,对外提供服务</code>  <h4 id="分词器"><a href="#分词器" class="headerlink" title="分词器"></a>分词器</h4><code>是es中专门处理分词的组件,英文名为Analyzer</code></li>
+</ul>
+</li>
+<li>组成部分:<ul>
+<li>Character Filters  <code>针对原始文本进行处理,比如去除html特殊标记</code></li>
+<li>Tokenizer  <code>将原始文本按照一定规则切分为单词</code></li>
+<li>Token Filters  <code>针对tokenizer处理的单词再加工,比如转小写,删除或新增等处理</code></li>
+</ul>
+</li>
+<li>预定义的分词器<br><code>es自带如下的分词器:</code>  <ul>
+<li>Standard<ul>
+<li>默认分词器</li>
+<li>按词切分,支持多语言</li>
+<li>小写处理</li>
+</ul>
+</li>
+<li>Simple  <ul>
+<li>按照非字母切分</li>
+<li>小写处理</li>
+</ul>
+</li>
+<li>Whitespace <ul>
+<li>按照空格切分 </li>
+</ul>
+</li>
+<li>Stop  <ul>
+<li>Stop Word指语气助词等修饰性的词语,比如the,an,的,这等等</li>
+<li>相比Simple多了Stop Word处理</li>
+</ul>
+</li>
+<li>Keyword <ul>
+<li>不分词,直接将输入作为一个单词输出 </li>
+</ul>
+</li>
+<li>Pattern  <ul>
+<li>通过正则表达式自定义分隔符</li>
+<li>默认是\W+,即非字符的符号作为分隔符 </li>
+</ul>
+</li>
+<li>Language  <ul>
+<li>提供了30+常见语言的分词器  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中文分词<ul>
+<li>中文分词指的是将一个汉字序列切分为一个一个单独的词,在英文中,单词之间是以空格作为自然分界符,汉语中词没有一个形式上的分界符</li>
+<li>上下文不同,分词结果迥异,比如交叉歧义问题,比如下面两种分词都合理<ul>
+<li>乒乓球拍/卖/完了</li>
+<li>乒乓球/拍卖/完了</li>
+</ul>
+</li>
+<li>常见分词系统<ul>
+<li>IK<ul>
+<li>实现中英文单词的切分,支持ik_smart,ik_maxword等模式</li>
+<li>可自定义词库,支持热更新分词词典</li>
+<li><a href="https://github.com/medcl/elasticsearch-analysis-ik" target="_blank" rel="noopener">https://github.com/medcl/elasticsearch-analysis-ik</a></li>
+</ul>
+</li>
+<li>jieba  <ul>
+<li>python中最流行的分词系统,支持分词和词性标注  </li>
+<li>支持繁体分词,自定义词典,并行分词等  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义分词<br><code>当自带的分词无法满足需求时,可以自定义分词,通过自定义Character Filters,Tokenizer和Token Filter实现</code>  <ul>
+<li>Character Filters <ul>
+<li>自带的如下:  <ul>
+<li>HTML Strip去除html标签和转换html实体</li>
+<li>Mapping进行字符替换操作</li>
+<li>Pattern Replace进行正则匹配替换</li>
+</ul>
+</li>
+<li>会影响后续tokenizer解析的postion和offset信息</li>
+</ul>
+</li>
+<li>Tokenizer<ul>
+<li>自带的如下:<ul>
+<li>standard按照单词进行分割</li>
+<li>letter按照空格进行分割</li>
+<li>whitespace按照空格进行分割  </li>
+<li>UAX URL Email按照standard分割,但不会分割邮箱和url</li>
+<li>NGram和Edge NGram连词分割</li>
+<li>Path Hierarchy按照路径进行分割<h4 id="Analyze-API"><a href="#Analyze-API" class="headerlink" title="Analyze API"></a>Analyze API</h4><code>es提供了一个测试分析的api接口,方便验证分词效果,endpoint是_analyze</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>可以直接指定analyzer进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">    &quot;analyzer&quot;:&quot;standard&quot;,</span><br><span class="line">    &quot;text&quot;:&quot;hello world!&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以直接指定索引中的字段进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST test_index/_analyze</span><br><span class="line">&#123;</span><br><span class="line">    &quot;field&quot;:&quot;username&quot;,</span><br><span class="line">    &quot;text&quot;:&quot;hello world&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以自定义分词器进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">    &quot;tokenizer&quot;:&quot;standard&quot;,</span><br><span class="line">    &quot;filter&quot;:[&quot;lowercase&quot;],</span><br><span class="line">    &quot;text&quot;:&quot;Hello World!&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/24/Elastic-Stack/" rel="next" title="Elastic Stack概述">
+                <i class="fa fa-chevron-left"></i> Elastic Stack概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">fireworks</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用术语"><span class="nav-number">1.</span> <span class="nav-text">常用术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分词器"><span class="nav-number">2.</span> <span class="nav-text">分词器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analyze-API"><span class="nav-number">3.</span> <span class="nav-text">Analyze API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fireworks</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
