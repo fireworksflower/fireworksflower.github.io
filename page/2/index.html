@@ -229,6 +229,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/MYSQL和Oracle的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/22/MYSQL和Oracle的区别/" itemprop="url">MYSQL和Oracle的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+<li>Oracle为商用数据库,行业中占据相当的地位:市场占比2012年为40%.开发,管理资源相当丰富,有自己的matalink(有什么问题,都可以在那里得到较快的解决),一般项目中至少有两个Oracle数据库:联机事务处理(OLTP)数据库,联机分析处理数据库(OLAP),通过配置实现这两个数据库的同步,Oracle在这两个方面非常出色.  </li>
+<li>Oracle具有良好的兼容性,可移植性,可连接性,高生产率,结构严谨,高可用,高性能使Oracle RDBMS具有良好的开放性.  </li>
+<li>MYSQL为非商用开源数据库,免费,简便易用,中小型项目使用绝对没有问题,据说facebook这样的大型网站也用MYSQL做数据库.  </li>
+<li>MYSQL更多的是追求轻量,易用,以及早期的事物操作及复杂查询优化的缺失,在传统的数据库应用场景中,份额极少.  </li>
+<li>MYSQL最大的特点就是自由选择存储引擎,每个表都是一个文件,都可以选择合适的存储引擎.常见的引擎有InnoDB,MyISAM,NDBCluster等,但由于这种开放插件式的存储引擎,比如要求数据库与引擎之间的松耦合关系,从而导致文件的一致性大大降低,在SQL执行优化方面,也就有着一些不可避免的瓶颈,在多表关联,子查询优化,统计函数等方面是软肋,而且只支持极简单的HINI.  </li>
+</ul>
+<h3 id="MYSQL数据库特点"><a href="#MYSQL数据库特点" class="headerlink" title="MYSQL数据库特点"></a>MYSQL数据库特点</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL作为一种开放源码数据库,以其简单易用的特点广泛被广大用户采用.<br>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL虽然是免费的,但同Oracle,Sysbase,Informix,Db2等商业数据库一样,具有数据库系统的通用性:  </p>
+<ul>
+<li>数据库管理系统.所谓的数据库就是一些结构化的数据的联合体,要提供对这些数据的存取,增加,修改,删除或更加复杂的数据抽取等操作,需要有一个支撑系统,这就是数据库管理系统(DBMS),MYSQL完全具有这方面的功能.  </li>
+<li>关系型数据库管理系统.在数据库的发展历程中,曾出现过多种不同形式的数据库系统,但关系型数据库管理系统(DBMS)以其优越性而被广为采用,现在几种广泛使用的数据库全为关系型数据库,同样,MYSQL也是关系型数据库,支持标准的结构化查询语言.  </li>
+<li>开放源码数据库.同商业性的数据库相比,这是MYSQL最大的特点.MYSQL的源码是公开的,这就意味着任何人,只要遵守GPL的规则都可以对MYSQL的源码使用,修改以符合自己特殊的要求.  </li>
+<li>技术特点.MYSQL是C/S架构的服务器,服务器端是多线程的,为客户端提供了不同的程序接口和链接库,如C,C++,java,PHP,Tcl等,也提供了简单的管理工具,如mysql,mysqlmin等.  </li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL的特性:  </p>
+<ul>
+<li>开发语言是C/C++,支持多种编译器,如gcc,cc,xlc,acc等.  </li>
+<li>良好的内存管理机制,尤其是内存泄漏问题的管理,通过了Pueify的严格测试.  </li>
+<li>支持多种平台,如AIX,Solaris,HP,FreeBSD,Windows等.  </li>
+<li>提供多种形式的API,为我们开发工具的选择提供了便利.  </li>
+<li>使用多线程的技术,可充分发挥系统的特点,避免在SMP系统中出现仅使用但CPU的现象.  </li>
+<li>对磁盘表的管理采用Btree加密及索引的技术,为我们快速访问数据提供了可能.  </li>
+<li>高性能的内存申请技术  </li>
+<li>临时表采用在内存中以哈希表实现  </li>
+<li>提供多种数据类型  </li>
+<li>支持定长和变长的记录  </li>
+<li>所有的列都有缺省值,为我们的某些’粗心’提供了方便  </li>
+<li>灵活,安全的权限和密码系统,密码在传输中加密传输,允许主机端验证密码  </li>
+<li>客户端可以通过TCP/IP,Unix套接字,命令管道(NT)连接到MYSQL数据库服务器  </li>
+<li>对多种字符集的完全支持  </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/mysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1877,7 +2027,7 @@ public static String md5(String plainText) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

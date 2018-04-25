@@ -229,6 +229,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/elasticsearch第二篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/25/elasticsearch第二篇/" itemprop="url">elasticsearch第二篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:25+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h4><p><code>类似数据库中的表结构定义</code></p>
+<ul>
+<li><p>作用</p>
+<ul>
+<li>定义Index下的字段名(Field Name)  </li>
+<li>定义字段的类型,比如数值型,字符串型,布尔型等  </li>
+<li>定义倒排索引相关的配置,比如是否索引,记录  position等<br>得到一个索引的mapping  <code>GET /test_index/_mapping</code>  </li>
+</ul>
+</li>
+<li><p>自定义Mapping  </p>
+<ul>
+<li>禁止直接修改<br> Mapping中的字段类型一旦设定后,禁止直接修改,因为Lucene实现的倒排索引生成后不允许修改,可以重新建立新的索引,然后做reindex操作</li>
+<li>允许新增字段 <code>通过dynamic参数来控制字段的新增</code>  <ul>
+<li>true(默认)允许自动新增字段  </li>
+<li>false不允许自动新增字段,但是文档 可以正常写入,但无法对字段进行查询等操作  </li>
+<li>strict文档不能写入,报错<br>-几个设置</li>
+<li>copy_to<br><code>将该字段的值复制到目标字段,实现类似_all的作用,不会出现在_source中,只用来搜索</code></li>
+<li>index<br><code>控制当前字段是否索引,默认为true,即记录索引,false不记录,即不可搜索</code>  </li>
+<li>index_options用于控制倒排索引记录的内容,有如下4种配置:<ul>
+<li>docs只记录doc id  </li>
+<li>freqs记录doc id和term frequencies(词频)</li>
+<li>positions记录doc id,term frequencies和term position</li>
+<li>offsets记录doc id,term frequencies,term position和character offsets<br>text类型默认配置为positions,其他默认为docs<br>记录内容越多,占用空间越大</li>
+</ul>
+</li>
+<li>null_value<br><code>当字段遇到null值时的处理策略,默认为null,即空值,此时es会忽略该值,可以通过设定该值设定字段的默认值</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/elasticsearch第一篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,7 +453,7 @@
             <h4 id="常用术语"><a href="#常用术语" class="headerlink" title="常用术语"></a>常用术语</h4><p><strong>文档 Document</strong><br><code>用户存储在es中的数据类型</code></p>
 <ul>
 <li><p>数据类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.字符型:text,keyword</span><br><span class="line">2.数值型:long,integer,short,byte,float,half_float,scaled_float</span><br><span class="line">3.布尔:boolean</span><br><span class="line">4.日期:date</span><br><span class="line">5.二进制:binary</span><br><span class="line">6.范围类型:integer_range,float_range,long_range,double_range,date_range,date_range</span><br><span class="line">注:每个文档有唯一的id标识  </span><br><span class="line">1).自行指定  </span><br><span class="line">2).es自动生成</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">核心数据类型</span><br><span class="line">    1.字符型:text,keyword</span><br><span class="line">    2.数值型:long,integer,short,byte,float,half_float,scaled_float</span><br><span class="line">    3.布尔:boolean</span><br><span class="line">    4.日期:date</span><br><span class="line">    5.二进制:binary</span><br><span class="line">    6.范围类型:integer_range,float_range,long_range,double_range,date_range,date_range</span><br><span class="line">复杂数据类型</span><br><span class="line">    1.数组类型array</span><br><span class="line">    2.对象类型object</span><br><span class="line">    3.嵌套类型nested object</span><br><span class="line">地理位置数据类型 </span><br><span class="line">    1.geo_point</span><br><span class="line">    2.geo_shape</span><br><span class="line"></span><br><span class="line">注:每个文档有唯一的id标识  </span><br><span class="line">1).自行指定  </span><br><span class="line">2).es自动生成</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>元数据<br><code>用于标注文档的相关信息</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1._index:文档所在的索引名  </span><br><span class="line">2._type:文档所在的类型名</span><br><span class="line">3._id:文档唯一id</span><br><span class="line">4._source:文档的原始Json数据,可以从这里获取每个字段的内容</span><br><span class="line">5._all:整合所有字段内容到该字段,默认禁止</span><br></pre></td></tr></table></figure>
@@ -1831,156 +1981,6 @@ where t.deptno = e.deptno;</code></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/MYSQL和Oracle的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fireworks">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ghost">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/MYSQL和Oracle的区别/" itemprop="url">MYSQL和Oracle的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
-<li>Oracle为商用数据库,行业中占据相当的地位:市场占比2012年为40%.开发,管理资源相当丰富,有自己的matalink(有什么问题,都可以在那里得到较快的解决),一般项目中至少有两个Oracle数据库:联机事务处理(OLTP)数据库,联机分析处理数据库(OLAP),通过配置实现这两个数据库的同步,Oracle在这两个方面非常出色.  </li>
-<li>Oracle具有良好的兼容性,可移植性,可连接性,高生产率,结构严谨,高可用,高性能使Oracle RDBMS具有良好的开放性.  </li>
-<li>MYSQL为非商用开源数据库,免费,简便易用,中小型项目使用绝对没有问题,据说facebook这样的大型网站也用MYSQL做数据库.  </li>
-<li>MYSQL更多的是追求轻量,易用,以及早期的事物操作及复杂查询优化的缺失,在传统的数据库应用场景中,份额极少.  </li>
-<li>MYSQL最大的特点就是自由选择存储引擎,每个表都是一个文件,都可以选择合适的存储引擎.常见的引擎有InnoDB,MyISAM,NDBCluster等,但由于这种开放插件式的存储引擎,比如要求数据库与引擎之间的松耦合关系,从而导致文件的一致性大大降低,在SQL执行优化方面,也就有着一些不可避免的瓶颈,在多表关联,子查询优化,统计函数等方面是软肋,而且只支持极简单的HINI.  </li>
-</ul>
-<h3 id="MYSQL数据库特点"><a href="#MYSQL数据库特点" class="headerlink" title="MYSQL数据库特点"></a>MYSQL数据库特点</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL作为一种开放源码数据库,以其简单易用的特点广泛被广大用户采用.<br>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL虽然是免费的,但同Oracle,Sysbase,Informix,Db2等商业数据库一样,具有数据库系统的通用性:  </p>
-<ul>
-<li>数据库管理系统.所谓的数据库就是一些结构化的数据的联合体,要提供对这些数据的存取,增加,修改,删除或更加复杂的数据抽取等操作,需要有一个支撑系统,这就是数据库管理系统(DBMS),MYSQL完全具有这方面的功能.  </li>
-<li>关系型数据库管理系统.在数据库的发展历程中,曾出现过多种不同形式的数据库系统,但关系型数据库管理系统(DBMS)以其优越性而被广为采用,现在几种广泛使用的数据库全为关系型数据库,同样,MYSQL也是关系型数据库,支持标准的结构化查询语言.  </li>
-<li>开放源码数据库.同商业性的数据库相比,这是MYSQL最大的特点.MYSQL的源码是公开的,这就意味着任何人,只要遵守GPL的规则都可以对MYSQL的源码使用,修改以符合自己特殊的要求.  </li>
-<li>技术特点.MYSQL是C/S架构的服务器,服务器端是多线程的,为客户端提供了不同的程序接口和链接库,如C,C++,java,PHP,Tcl等,也提供了简单的管理工具,如mysql,mysqlmin等.  </li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;MYSQL的特性:  </p>
-<ul>
-<li>开发语言是C/C++,支持多种编译器,如gcc,cc,xlc,acc等.  </li>
-<li>良好的内存管理机制,尤其是内存泄漏问题的管理,通过了Pueify的严格测试.  </li>
-<li>支持多种平台,如AIX,Solaris,HP,FreeBSD,Windows等.  </li>
-<li>提供多种形式的API,为我们开发工具的选择提供了便利.  </li>
-<li>使用多线程的技术,可充分发挥系统的特点,避免在SMP系统中出现仅使用但CPU的现象.  </li>
-<li>对磁盘表的管理采用Btree加密及索引的技术,为我们快速访问数据提供了可能.  </li>
-<li>高性能的内存申请技术  </li>
-<li>临时表采用在内存中以哈希表实现  </li>
-<li>提供多种数据类型  </li>
-<li>支持定长和变长的记录  </li>
-<li>所有的列都有缺省值,为我们的某些’粗心’提供了方便  </li>
-<li>灵活,安全的权限和密码系统,密码在传输中加密传输,允许主机端验证密码  </li>
-<li>客户端可以通过TCP/IP,Unix套接字,命令管道(NT)连接到MYSQL数据库服务器  </li>
-<li>对多种字符集的完全支持  </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2031,7 +2031,7 @@ where t.deptno = e.deptno;</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

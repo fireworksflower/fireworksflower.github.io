@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="RedisRedis的特性    速度快   持久化   多种数据结构   支持多种编辑语言   功能丰富   简单   主从复制   高可用,分布式Redis典型应用场景    缓存系统   计数器   消息队列系统   排行榜   社交网络   实时系统Redis安装三种启动方式     最简启动redis-server验证方法ps -ef | grep redisnetstat -antpl">
+<meta name="description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis">
-<meta property="og:url" content="http://yoursite.com/2018/04/22/Redis/index.html">
+<meta property="og:title" content="elasticsearch第二篇">
+<meta property="og:url" content="http://yoursite.com/2018/04/25/elasticsearch第二篇/index.html">
 <meta property="og:site_name" content="ghost">
-<meta property="og:description" content="RedisRedis的特性    速度快   持久化   多种数据结构   支持多种编辑语言   功能丰富   简单   主从复制   高可用,分布式Redis典型应用场景    缓存系统   计数器   消息队列系统   排行榜   社交网络   实时系统Redis安装三种启动方式     最简启动redis-server验证方法ps -ef | grep redisnetstat -antpl">
+<meta property="og:description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-01-21T07:12:18.000Z">
+<meta property="og:updated_time" content="2018-04-25T04:52:29.794Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis">
-<meta name="twitter:description" content="RedisRedis的特性    速度快   持久化   多种数据结构   支持多种编辑语言   功能丰富   简单   主从复制   高可用,分布式Redis典型应用场景    缓存系统   计数器   消息队列系统   排行榜   社交网络   实时系统Redis安装三种启动方式     最简启动redis-server验证方法ps -ef | grep redisnetstat -antpl">
+<meta name="twitter:title" content="elasticsearch第二篇">
+<meta name="twitter:description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/22/Redis/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/25/elasticsearch第二篇/"/>
 
 
 
 
 
-  <title>Redis | ghost</title>
+  <title>elasticsearch第二篇 | ghost</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/Redis/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/elasticsearch第二篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fireworks">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis</h1>
+          <h1 class="post-title" itemprop="name headline">elasticsearch第二篇</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:25+08:00">
+                2018-04-25
               </time>
             
 
@@ -299,28 +299,37 @@
       
 
       
-        <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><p><strong>Redis的特性</strong>  </p>
+        <h4 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h4><p><code>类似数据库中的表结构定义</code></p>
 <ul>
-<li>速度快  </li>
-<li>持久化  </li>
-<li>多种数据结构  </li>
-<li>支持多种编辑语言  </li>
-<li>功能丰富  </li>
-<li>简单  </li>
-<li>主从复制  </li>
-<li>高可用,分布式<br><strong>Redis典型应用场景</strong>   </li>
-<li>缓存系统  </li>
-<li>计数器  </li>
-<li>消息队列系统  </li>
-<li>排行榜  </li>
-<li>社交网络  </li>
-<li>实时系统<br><strong>Redis安装</strong><br>三种启动方式  </li>
+<li><p>作用</p>
+<ul>
+<li>定义Index下的字段名(Field Name)  </li>
+<li>定义字段的类型,比如数值型,字符串型,布尔型等  </li>
+<li>定义倒排索引相关的配置,比如是否索引,记录  position等<br>得到一个索引的mapping  <code>GET /test_index/_mapping</code>  </li>
 </ul>
-<ol>
-<li>最简启动<br><code>redis-server</code><br>验证方法<br><code>ps -ef | grep redis</code><br><code>netstat -antpl | grep redis</code><br><code>redis-cli -h ip -p port ping</code>    </li>
-<li>动态参数启动 redis<br><code>redis-server --port 8088</code>  </li>
-<li>配置文件启动<br><code>redis-server configPath</code>  </li>
-</ol>
+</li>
+<li><p>自定义Mapping  </p>
+<ul>
+<li>禁止直接修改<br> Mapping中的字段类型一旦设定后,禁止直接修改,因为Lucene实现的倒排索引生成后不允许修改,可以重新建立新的索引,然后做reindex操作</li>
+<li>允许新增字段 <code>通过dynamic参数来控制字段的新增</code>  <ul>
+<li>true(默认)允许自动新增字段  </li>
+<li>false不允许自动新增字段,但是文档 可以正常写入,但无法对字段进行查询等操作  </li>
+<li>strict文档不能写入,报错<br>-几个设置</li>
+<li>copy_to<br><code>将该字段的值复制到目标字段,实现类似_all的作用,不会出现在_source中,只用来搜索</code></li>
+<li>index<br><code>控制当前字段是否索引,默认为true,即记录索引,false不记录,即不可搜索</code>  </li>
+<li>index_options用于控制倒排索引记录的内容,有如下4种配置:<ul>
+<li>docs只记录doc id  </li>
+<li>freqs记录doc id和term frequencies(词频)</li>
+<li>positions记录doc id,term frequencies和term position</li>
+<li>offsets记录doc id,term frequencies,term position和character offsets<br>text类型默认配置为positions,其他默认为docs<br>记录内容越多,占用空间越大</li>
+</ul>
+</li>
+<li>null_value<br><code>当字段遇到null值时的处理策略,默认为null,即空值,此时es会忽略该值,可以通过设定该值设定字段的默认值</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -345,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/mysql练习/" rel="next" title="sql练习">
-                <i class="fa fa-chevron-left"></i> sql练习
+              <a href="/2018/04/25/elasticsearch第一篇/" rel="next" title="elasticsearch第一篇">
+                <i class="fa fa-chevron-left"></i> elasticsearch第一篇
               </a>
             
           </div>
@@ -354,10 +363,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/22/tomcat相关/" rel="prev" title="tomcat相关">
-                tomcat相关 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,7 +478,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis"><span class="nav-number">1.</span> <span class="nav-text">Redis</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapping"><span class="nav-number">1.</span> <span class="nav-text">Mapping</span></a></li></ol></div>
             
 
           </div>
