@@ -229,6 +229,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/mysql练习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/22/mysql练习/" itemprop="url">sql练习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="sql练习"><a href="#sql练习" class="headerlink" title="sql练习"></a>sql练习</h3><p><strong>创建数据库</strong><br><code>create database dbexecise;</code><br><strong>切换到dbexecise数据库</strong><br><code>use dbexecise;</code><br><strong>创建部门表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">	#部门编号</span><br><span class="line">	deptno int primary key,	</span><br><span class="line">	#部门名称</span><br><span class="line">	deptname varchar(50),	</span><br><span class="line">	# 部门位置	</span><br><span class="line">	loc varchar(50)				</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>部门表插入语句</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `dept` VALUES (&apos;10&apos;, &apos;会计部&apos;, &apos;北京&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;20&apos;, &apos;调查部&apos;, &apos;杭州&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;30&apos;, &apos;销售部&apos;, &apos;上海&apos;);</span><br><span class="line">INSERT INTO `dept` VALUES (&apos;40&apos;, &apos;营销部&apos;, &apos;深圳&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建员工表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">create table emp(	</span><br><span class="line">	#员工编号			</span><br><span class="line">	empno int primary key,	</span><br><span class="line">	#员工姓名	 </span><br><span class="line">	empname varchar(50),</span><br><span class="line">	#职位		</span><br><span class="line">	job varchar(50),	</span><br><span class="line">	#直属上级	</span><br><span class="line">	mgr int,</span><br><span class="line">	#受雇日期					</span><br><span class="line">	hiredate date,		</span><br><span class="line">	#薪资		</span><br><span class="line">	sal int,	</span><br><span class="line">	#奖金				</span><br><span class="line">	comm int,</span><br><span class="line">    #所在部门编号</span><br><span class="line">	deptno int,	</span><br><span class="line">	#外键				 </span><br><span class="line">	foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>员工表插入数据</strong></p>
+<pre><code>INSERT INTO `emp` VALUES (&apos;7369&apos;, &apos;张无忌&apos;, &apos;办事员&apos;, &apos;7902&apos;, &apos;1980-12-17&apos;, &apos;800&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7499&apos;, &apos;曹操&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-20&apos;, &apos;1600&apos;, &apos;300&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7521&apos;, &apos;杨志&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-22&apos;, &apos;1250&apos;, &apos;500&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7566&apos;, &apos;朱元璋&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-04-02&apos;, &apos;2975&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7654&apos;, &apos;殷天正&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-28&apos;, &apos;1250&apos;, &apos;1400&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7698&apos;, &apos;张三丰&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-05-01&apos;, &apos;2850&apos;, null, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7782&apos;, &apos;关羽&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-06-09&apos;, &apos;2450&apos;, null, &apos;10&apos;);
+INSERT INTO `emp` VALUES (&apos;7788&apos;, &apos;宋江&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1987-04-19&apos;, &apos;3000&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7839&apos;, &apos;韩少云&apos;, &apos;董事长&apos;, null, &apos;1981-11-17&apos;, &apos;5000&apos;, null, &apos;10&apos;);
+INSERT INTO `emp` VALUES (&apos;7844&apos;, &apos;孙二娘&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-08&apos;, &apos;1500&apos;, &apos;0&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7876&apos;, &apos;张飞&apos;, &apos;办事员&apos;, &apos;7788&apos;, &apos;1987-05-23&apos;, &apos;1100&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7900&apos;, &apos;赵云&apos;, &apos;办事员&apos;, &apos;7698&apos;, &apos;1981-12-03&apos;, &apos;950&apos;, null, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7902&apos;, &apos;诸葛亮&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1981-12-03&apos;, &apos;3000&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7934&apos;, &apos;夏侯惇&apos;, &apos;办事员&apos;, &apos;7782&apos;, &apos;1982-01-23&apos;, &apos;1300&apos;, null, &apos;10&apos;);
+</code></pre><p>###查询语句<br><strong>1.列出部门名称和这些部门的员工信息,同时列出那些没有员工的部门</strong><br><code>select deptname, empname, empno, emp.deptno from dept left join emp on emp.deptno=dept.deptno;</code><br><strong>2.列出薪资比关羽高的所有员工.</strong><br>1).查询出关羽的薪资<br><code>select sal from emp where empname=&#39;关羽&#39;</code><br>2).查询出比关羽薪资高的员工<br><code>select empno,empname,sal from emp where sal&gt;( SELECT sal from emp where empname=&#39;关羽&#39;);</code><br><strong>3.列出所有员工的姓名及其直接上级的姓名</strong><br>1).查询员工<br><code>select empno,mgr from emp e1;</code><br>2).查询员工的上级<br><code>select empno,empname from emp e2;</code><br>3).关联查询,查询出员工及员工对应的上级<br><code>select e1.empname,e2.empname from emp e1,emp e2 where e1.mgr = e2.empno;</code><br><strong>4.列出最低薪资大于1500的各种职位及其从事此职位的员工人数</strong><br>1).查询出各种职位的最低薪资<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal);</code><br>2).查询出最低薪资&gt;1500的职位<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal)&gt;1500;</code><br>3).查询出每个职位对应的员工人数<br><code>select job, min(sal) 最低薪资, count(*) 员工人数 from emp group by job having min(sal)&gt;1500;</code><br><strong>5.列出在销售部职位的员工姓名,假定不知道销售部的部门编号</strong><br>1).查询出销售部的部门编号<br><code>select deptno from dept where deptname=&#39;销售部&#39;;</code><br>2).查询出在销售部职位的员工姓名<br><code>select empname from emp where deptno=(select deptno from dept where deptname=&#39;销售部&#39;);</code><br><strong>6.列出与曹操从事相同职位的所有员工及部门名称</strong><br>1).查询出曹操从事的职位及部门编号<br><code>select job,deptno from emp where empname=&#39;曹操&#39;;</code><br>2).查询出与曹操从事相同职位的所有员工<br><code>select empname,deptno from emp where job=(select job from emp where empname=&#39;曹操&#39;);</code><br>3).查询出与曹操从事相同职位的所有员工及部门名称<br><code>select deptname,empname from dept,(select empname,deptno from emp  where job=(select job from emp where empname=&#39;曹操&#39;))e2 where dept.deptno=e2.deptno;</code><br><strong>7.列出薪资高于销售部(已知编号为30)就职的所有员工的薪资的员工姓名和薪资,部门名称</strong><br>1).查出在销售部就职的所有员工最高薪资<br><code>select max(sal) from emp where deptno=30;</code><br>2).关联查询, 查询员工的姓名,薪资, 部门名称<br><code>select e.empname,e.sal,d.deptname from emp e,dept d where e.deptno=d.deptno and sal&gt;(select max(sal) from emp where deptno=30);</code><br><strong>8.列出在每个部门职位的员工数量、平均工资。</strong><br><code>select count(*),avg(sal) from emp group by deptno;</code><br><strong>9.查出至少有一个员工的部门。显示部门人数、部门编号、部门名称、部门位置.</strong><br>1).查询出每个部门员工数量<br><code>select count(*),deptno from emp group by deptno;</code><br>2).关联查询,查询出部门编号、部门名称、部门位置<br><code>select i.c,d.deptname,d.loc,d.deptno from dept d,(select count(*) c,deptno from emp group by deptno)i  where i.deptno=d.deptno and i.c&gt;=1;</code><br><strong>10.列出受雇日期早于直接上级的所有员工的编号,姓名,部门名称</strong><br><code>select e1.empname, e1.empno, d.deptname from emp e1, emp e2, dept d where e1.deptno=d.deptno and e1.mgr=e2.empno and e1.hiredate &lt; e2.hiredate;</code><br><strong>11.列出所有职员的姓名及其部门名称，部门的人数。</strong><br><code>select t.empname, t.deptname, e.cnt 员工数量  from 
+(
+    select e.empname, e.deptno, d.deptname from emp e, dept d where e.deptno=d.deptno
+) t, (
+    select deptno, count(*) cnt from emp group by deptno
+) e
+where t.deptno = e.deptno;</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/MYSQL和Oracle的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1857,131 +2001,11 @@ public static String md5(String plainText) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fireworks">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ghost">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/first-blog/" itemprop="url">我的博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p></p><h3 style="text-align:center">为什么会有一个属于我自己的博客呢?</h3><br>&nbsp;&nbsp;&nbsp;&nbsp;其实是由于自己的好奇心,感觉拥有自己的一个博客是非常自豪的,可以在上面发表自己的心得,记录自己的足迹.<br>&nbsp;&nbsp;&nbsp;&nbsp;第一次接触博客是在我上大一的时候,刚接触,当时的自己朦朦胧胧,就是觉得博客遥不可及,只是单纯地仰慕别人罢了,当我大三的时候,又看到别人的博客,压在心中的小火苗燃烧起来了,而自己当时在自学web前端开发,一边学习新的知识,一边和别人一起做项目,所以建一个自己博客也别搁置了.<br>&nbsp;&nbsp;&nbsp;&nbsp;现在的我已经大四了,而因学校安排,目前我在学大数据,每周会有一天自习,一天休息,闲下来的我,又各种乱想,拥有自己的一个博客的欲望越来越强,心里给自己暗示,这次的我一定不要错过了,一定要建一个属于自己的博客.<br>&nbsp;&nbsp;&nbsp;&nbsp;我就向周围同学,朋友咨询,在我的github上建了一个属于自己的博客,建好后的我心情大好,我终于有属于自己的博客了,好开心.<br>&nbsp;&nbsp;&nbsp;&nbsp;接下来的几天,我各种百度,怎么在我的博客上发表我的文章,学会后迫不及待的就尝试着发表此文章.<br>&nbsp;&nbsp;&nbsp;&nbsp;在今后的学习旅程中,我会记录我的学习心得,供大家和我一起学习.<br>&nbsp;&nbsp;&nbsp;&nbsp;活到老,学到老!<br><img src="http://res.cloudinary.com/fireworks/image/upload/v1512874125/first_blog_pzicl9.png"><p></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2027,7 +2051,7 @@ public static String md5(String plainText) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
