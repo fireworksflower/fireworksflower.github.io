@@ -229,6 +229,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/python爬虫搜索引擎学习心得/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/python爬虫搜索引擎学习心得/" itemprop="url">python爬虫搜索引擎学习心得</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T18:07:29+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="pyton爬虫打造搜索引擎的学习心得"><a href="#pyton爬虫打造搜索引擎的学习心得" class="headerlink" title="pyton爬虫打造搜索引擎的学习心得"></a>pyton爬虫打造搜索引擎的学习心得</h4><p>1.创建虚拟机：virtualenv scrapytest<br>2.启动虚拟机:进入虚拟机：cd scrapytest然后cd Scripts然后执行activate.bat,如果退出虚拟机则执行deactivate.bat<br>3.用python3.5创建虚拟机：在虚拟环境scrapytest下Scripts下运行virtualenv -p D:\WorkSpace\python3.5.3\python.exe scrapypy3<br>4.创建python项目：在进入虚拟机的情况下，执行scrapy startproject ArticleSpider创建python项目<br>5.镜像：<a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a><br>6.安装django:先下载压缩包，解压到与python同目录下，进入django目录，执行命令：python setup.py<br>7.创建python项目：在进入虚拟机的情况下，执行scrapy startproject ArticleSpider创建python项目<br>8.爬取网站：进入项目根目录，然后执行scrapy genspider jobbole blog.jobbole.com<br>9.启动spider:例如启动jobbole,需要进入项目根目录，然后安装pypiwin32,执行命令pip install pypiwin32,然后执行scrapy crawl jobbole<br>10.要在命令行爬取数据，例如爬取<a href="http://www.jobbole.com/网页的数据，执行命令scrapy" target="_blank" rel="noopener">http://www.jobbole.com/网页的数据，执行命令scrapy</a> shell <a href="http://www.jobbole.com/" target="_blank" rel="noopener">http://www.jobbole.com/</a><br>11.安装requests库，进入项目根目录，执行pip install requests<br>12.爬虫:自动获取网站数据的程序,关键是批量的获取<br>13.反爬虫:使用技术手段防止爬虫程序的方法<br>14.误伤:反爬技术将普通用户识别为爬虫,如果误伤过高,效果再好也不能用<br>15.拦截:成功拦截爬虫,一般拦截率越高,误伤率越高<br>16.反爬虫的目的:<br>    1).初级爬虫:简单粗暴,不管服务器压力,容易弄挂网站;<br>    2).数据保护;<br>    3).失控的爬虫:由于某些情况下,忘记或者无法关闭的爬虫<br>    4).商业竞争对手<br>17.安装随机切换user-agent进入虚拟环境中,执行pip install fake-useragent<br>18.西刺免费ip代理:提供了好多免费ip代理<br>19.安装selenium:pip install selenium(Selenium也是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。)<br>20.部署环境：在项目路径下执行scrapy-deploy bobby -p ArticleSpider<br>21.爬取jobbole网站命令:scrapy genspider jobbole blog.jobbole.com<br>22.在命令行查看爬取到的数据：先安装pypiwin32:pip install -i <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a> pypiwin32,然后再执行scrapy crawl jobbole<br>23,在cmd命令下查看爬取数据：1).scrapy shell <a href="http://web.jobbole.com/94332/" target="_blank" rel="noopener">http://web.jobbole.com/94332/</a><br>2).title = response.xpath(“/html/body/div[1]/div[3]/div[1]/div[1]/h1”)<br>3). title<br>4). 查看title的值执行title.extract()<br>5). 查看title的值执行title.extract()[0]<br>24.安装图片库 进入虚拟环境执行：pip install -i <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a> pillow<br>25.安装数据库驱动：pip install mysqlclient<br>26.在article虚拟环境中安装elasticsearch,执行命令：pip install elasticsearch-dsl<br>27.连接远端服务器：telent localhost 8080(8080是端口号)<br>28.爬虫停止，暂停：在项目中创建一个文件夹job_info,然后在控制台启动虚拟环境，执行scrapy crawl lagou -s JOBDIR=job_info/001<br>29.分布式爬虫的优点：<br>1).充分利用多机器的宽带加速爬取<br>2).充分利用多机的ip加速爬取速度</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/数据库优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,12 +558,13 @@
 <li>简单  </li>
 <li>主从复制  </li>
 <li>高可用,分布式<br><strong>Redis典型应用场景</strong>   </li>
-<li>缓存系统  </li>
-<li>计数器  </li>
-<li>消息队列系统  </li>
-<li>排行榜  </li>
-<li>社交网络  </li>
-<li>实时系统<br><strong>redis数据结构</strong></li>
+<li>缓存(数据查询,短连接,新闻内容,商品内容等)(最多使用)</li>
+<li>分布式集群架构中的session分离  </li>
+<li>聊天室的在线好友列表  </li>
+<li>任务队列(秒杀,抢购,12306等等)(先进先出)</li>
+<li>应用排行榜(可以给每个元素设置一个打分,这样就可以排序)</li>
+<li>网站访问统计  </li>
+<li>数据过期处理(可以精确到毫秒)<br><strong>redis数据结构</strong></li>
 <li><p>String<br>string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。<br>string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。<br>string类型是Redis最基本的数据类型，一个键最大能存储512MB。</p>
 <p> redis 127.0.0.1:6379&gt; SET name “runoob”<br> OK<br> redis 127.0.0.1:6379&gt; GET name<br> “runoob”</p>
 </li>
@@ -479,7 +600,7 @@ redis 127.0.0.1:6379&gt; smembers runoob
 </ul>
 <p><strong>Redis安装</strong><br>三种启动方式  </p>
 <ol>
-<li>最简启动<br><code>redis-server</code><br>验证方法<br><code>ps -ef | grep redis</code><br><code>netstat -antpl | grep redis</code><br><code>redis-cli -h ip -p port ping</code>    </li>
+<li>最简启动<br><code>redis-server.exe</code><br>验证方法<br><code>ps -ef | grep redis</code><br><code>netstat -antpl | grep redis</code><br><code>redis-cli -h ip -p port ping</code>    </li>
 <li>动态参数启动 redis<br><code>redis-server --port 8088</code>  </li>
 <li>配置文件启动<br><code>redis-server configPath</code>  </li>
 </ol>
@@ -1852,153 +1973,6 @@ Serializable;
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/tomcat相关/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fireworks">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ghost">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/tomcat相关/" itemprop="url">tomcat相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="tomcat的下载安装配置"><a href="#tomcat的下载安装配置" class="headerlink" title="tomcat的下载安装配置"></a>tomcat的下载安装配置</h3><p>1.下载tomcat<br>&nbsp;&nbsp;&nbsp;&nbsp;下载地址<a href="http://tomcat.apache.org" target="_blank" rel="noopener">http://tomcat.apache.org/</a><br>&nbsp;&nbsp;&nbsp;&nbsp;下载时请注意,不同版本的区别:<br>&nbsp;&nbsp;&nbsp;&nbsp;.zip为压缩版,解压后即可使用.<br>&nbsp;&nbsp;&nbsp;&nbsp;.exe为安装版,安装后使用.<br>2.安装tomcat<br>&nbsp;&nbsp;&nbsp;&nbsp;(1).解压<br>&nbsp;&nbsp;&nbsp;&nbsp;将解压版.zip包拷贝到要安装的目录下,解压,改名为tomcat7.0.<br>&nbsp;&nbsp;&nbsp;&nbsp;注意,安装目录中不允许有空格和中文<br>3.配置环境<br>tomcat是java写的,需要jdk支持,故要配置java环境 ,然后配置tomcat,此处值介绍如何配置tomcat环境<br>计算机 &gt; 属性 &gt; 高级系统设置 &gt; 环境变量 &gt; 新建 &gt; 变量名<br>变量名设为:TOMCAT_HOME,值为tomcat安装的根目录<br>4.启动tomcat<br>&nbsp;&nbsp;&nbsp;&nbsp;通过[tomcat]/bin/startup.bat文件 启动tomcat服务器<br>&nbsp;&nbsp;&nbsp;&nbsp;通过[tomcat]/bin/shutdown.bat文件 关闭tomcat服务器<br>&nbsp;&nbsp;&nbsp;&nbsp;浏览器访问在<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 如果能够看到tomcat的首页就证明tomcat安装配置成功<br>5.安装常见问题<br>&nbsp;&nbsp;&nbsp;&nbsp;(1).端口占用问题:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.看是否一句你打开tomcat,或是tomcat在关闭时没有正确的关闭,可以运行shutdown.bat命令,然后再次打开.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.可以在cmd窗口中使用netstat -ano命令查询出哪个程序占用了端口,根据pid,在任务管理器的服务中找到此pid,结束这个程序后再启动tomcat即可.<br>&nbsp;&nbsp;&nbsp;&nbsp;(2).安装路径问题<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tomcat安装路径中一定不能有中文和空格,坑呢一时半会没问题,可能不知道什么时候可能出现意外.<br>6.修改默认的端口号<br>&nbsp;&nbsp;&nbsp;&nbsp;服务器在启动之后默认监听的是8080端口号,每次访问时都需要在IP地址或者主机名后面跟上这个端口号,如果想省略不写,可以将8080改为80即可.<br>&nbsp;&nbsp;&nbsp;&nbsp;找到[tomcat]/conf/server.xml文件并打开,第70行  </p>
-<pre><code>&lt;Connection port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot;
-    connectionTimeout=&quot;20000&quot;
-    redirectPort=&quot;8443&quot;/&gt;
----------------------------------
-将其中的8080改为80即可      
-</code></pre><h3 id="tomcat的目录结构"><a href="#tomcat的目录结构" class="headerlink" title="tomcat的目录结构"></a>tomcat的目录结构</h3><pre><code>bin---存放tomcat批处理文件的目录
-conf---存放tomcat配置文件的目录
-lib---存放tomcat运行时依赖的jar包
-logs---存放tomcat运行时产生的日志文件的目录
-temp---存放tomcat运行时产生的临时文件的目录
-webapps---这是和开发人员关系最大的目录,是用来存放web应用的目录,我们开发的web资源要保存在这个目录下,外界就可以访问了.
-work---存放tomcat服务器运行时产生的工作文件的目录
-</code></pre><h3 id="部署web应用到虚拟主机中"><a href="#部署web应用到虚拟主机中" class="headerlink" title="部署web应用到虚拟主机中"></a>部署web应用到虚拟主机中</h3><p>1.方式一:(了解)<br>&nbsp;&nbsp;&nbsp;&nbsp;在[tomcat]/conf/server.xml中的<host></host>标签内部,添加一个Context标签,配置如下: </p>
-<pre><code>&lt;Context path=&quot;/news&quot; docBase=&quot;C:\Users\hh\Desktop\news&quot;&gt;
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;其中path属性指定WEB应用的虚拟路径,第一个斜杠可以省略,docBase用来指定WEB应用真实路径<br>&nbsp;&nbsp;&nbsp;&nbsp;可以在浏览器输入相应的虚拟路径网址访问资源,比如:<a href="http://localhost/news/regist/regist.html" target="_blank" rel="noopener">http://localhost/news/regist/regist.html</a><br>&nbsp;&nbsp;&nbsp;&nbsp;这种方式每次配置完后都需要重新启动服务器才可以生效,所以不推荐!!!<br>2.方式二:<br>&nbsp;&nbsp;&nbsp;&nbsp;在[tomcat]/conf/Catalina/host目录下添加一个xxx.xml文件,文件的名字就是WEB应用的虚拟路径,文件中添加内容如下:<br>&nbsp;&nbsp;&nbsp;&nbsp;比如:我们先创建news2文件夹,在[tomcat]/conf/Catalina/localhost目录下添加一个news2.xml文件,文件内容如下:  </p>
-<pre><code>&lt;Context docBase=&quot;C:\Users\hh\Desktop\news2&quot;/&gt;
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;这种方式配置后不需要重启服务器就可以起到作用!<br>3.方式三:<br>&nbsp;&nbsp;&nbsp;&nbsp;直接将WEB应用放在localhost主机默认管理的目录下即可!<br>&nbsp;&nbsp;&nbsp;&nbsp;这里localhost管理的目录是webapps目录,[tomcat]/conf/server.xml中第124行可以看到,当然也可以修改,一般都不要动  </p>
-<pre><code>&lt;Host name=&quot;localhost&quot; appBase=&quot;webapps&quot; unpackWARs=&quot;true&quot; autoDeploy=&quot;true&quot;&gt;
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;文件夹的名字成为web应用的虚拟路径,无须重启服务器<br>&nbsp;&nbsp;&nbsp;&nbsp;比如:创建news3,并放入[tomcat]/webapps中,即可访问</p>
-<h3 id="配置缺省的WEB应用"><a href="#配置缺省的WEB应用" class="headerlink" title="配置缺省的WEB应用"></a>配置缺省的WEB应用</h3><p>1.第一种配置方式 只需要将path的值配置为空(“ “)即可<br>2.第二种配置方式 只需要将xxx.xml文件的名字配置为ROOT即可.<br>3.第三种配置 方式 只需要将webapps目录下WEB应用文件夹的名字配置为ROOT即可.<br>注意:如果三种方式都配置了缺省WEB应用,优先级规则是:第一种 &gt; 第二种 &gt; 第三种</p>
-<h3 id="配置虚拟主机"><a href="#配置虚拟主机" class="headerlink" title="配置虚拟主机"></a>配置虚拟主机</h3><p>第一步:在[tomcat]/conf/server.xml文件的Engine标签内部添加一个Host标签,配置如下(同时在[tomcat]/目录下创建baidu文件夹,并放入一个web应用)      </p>
-<pre><code>&lt;Host name=&quot;www.baidu.com&quot; appBase=&quot;baidu&quot;&gt;&lt;/Host&gt;  
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;其中name是必须存在的属性,用来指定虚拟主机的名称.<br>&nbsp;&nbsp;&nbsp;&nbsp;appBase可选属性,用来指定虚拟主机默认管理的目录,如果没有配置该属性,表示当前主机没有默认管理的目录!<br>第二步:<br>&nbsp;&nbsp;&nbsp;&nbsp;配置完后,还需要在DNS服务器中配置主机名和IP地址的映射关系,但是DNS服务器一般不能修改,可以通过hosts文件进行模拟,在下面的路径C:\Windows\System32\drivers\etc中找到hosts文件.<br>&nbsp;&nbsp;&nbsp;&nbsp; 在最后一行加入配置:(IP和网址之间是Tab键)  </p>
-<pre><code>127.0.0.1    www.baidu.com
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;在浏览器输入路径,如:<a href="http://www.baidu.com/news3/1.html" target="_blank" rel="noopener">www.baidu.com/news3/1.html</a><br>&nbsp;&nbsp;&nbsp;&nbsp;注意:当可以上网的时候,很有可能你输入的网址不能生效,直接去访问百度去了,这时候需要清dns缓存,打开cmd窗口,输入ipconfig/flushns,浏览器清缓再次打开即可.</p>
-<h3 id="配置默认虚拟主机"><a href="#配置默认虚拟主机" class="headerlink" title="配置默认虚拟主机"></a>配置默认虚拟主机</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;当使用IP访问服务器时,会访问哪台主机呢?<br>&nbsp;&nbsp;&nbsp;&nbsp;在[tomcat]/conf/server.xml文件的Engine标签上有一个属性defaultHost,可以通过此属性改变默认虚拟主机,比如(默认是localhost)  </p>
-<pre><code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;www.baidu.com&quot;&gt;
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2049,7 +2023,7 @@ work---存放tomcat服务器运行时产生的工作文件的目录
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

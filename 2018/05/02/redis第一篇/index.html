@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="ghost">
 <meta property="og:description" content="RedisRedis是一个开源,内存数据结构存储,用作数据库,缓存和消息代理,支持数据结构,如字符串,散列,列表,集合,具有范围查询的排序集,位图,超级日志和具有半径查询的地理空间索引,Redis具有内置复制,Lua脚本,LRU驱逐,事物和不同级别的磁盘持久性,并通过Redis Sentinel提供高可用性,并通过Redis群集实现自动分区.Redis的特性    速度快   持久化   多种数据">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T07:12:43.990Z">
+<meta property="og:updated_time" content="2018-05-07T07:23:02.530Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis第一篇">
 <meta name="twitter:description" content="RedisRedis是一个开源,内存数据结构存储,用作数据库,缓存和消息代理,支持数据结构,如字符串,散列,列表,集合,具有范围查询的排序集,位图,超级日志和具有半径查询的地理空间索引,Redis具有内置复制,Lua脚本,LRU驱逐,事物和不同级别的磁盘持久性,并通过Redis Sentinel提供高可用性,并通过Redis群集实现自动分区.Redis的特性    速度快   持久化   多种数据">
@@ -309,12 +309,13 @@
 <li>简单  </li>
 <li>主从复制  </li>
 <li>高可用,分布式<br><strong>Redis典型应用场景</strong>   </li>
-<li>缓存系统  </li>
-<li>计数器  </li>
-<li>消息队列系统  </li>
-<li>排行榜  </li>
-<li>社交网络  </li>
-<li>实时系统<br><strong>redis数据结构</strong></li>
+<li>缓存(数据查询,短连接,新闻内容,商品内容等)(最多使用)</li>
+<li>分布式集群架构中的session分离  </li>
+<li>聊天室的在线好友列表  </li>
+<li>任务队列(秒杀,抢购,12306等等)(先进先出)</li>
+<li>应用排行榜(可以给每个元素设置一个打分,这样就可以排序)</li>
+<li>网站访问统计  </li>
+<li>数据过期处理(可以精确到毫秒)<br><strong>redis数据结构</strong></li>
 <li><p>String<br>string是redis最基本的类型，你可以理解成与Memcached一模一样的类型，一个key对应一个value。<br>string类型是二进制安全的。意思是redis的string可以包含任何数据。比如jpg图片或者序列化的对象 。<br>string类型是Redis最基本的数据类型，一个键最大能存储512MB。</p>
 <p> redis 127.0.0.1:6379&gt; SET name “runoob”<br> OK<br> redis 127.0.0.1:6379&gt; GET name<br> “runoob”</p>
 </li>
@@ -350,7 +351,7 @@ redis 127.0.0.1:6379&gt; smembers runoob
 </ul>
 <p><strong>Redis安装</strong><br>三种启动方式  </p>
 <ol>
-<li>最简启动<br><code>redis-server</code><br>验证方法<br><code>ps -ef | grep redis</code><br><code>netstat -antpl | grep redis</code><br><code>redis-cli -h ip -p port ping</code>    </li>
+<li>最简启动<br><code>redis-server.exe</code><br>验证方法<br><code>ps -ef | grep redis</code><br><code>netstat -antpl | grep redis</code><br><code>redis-cli -h ip -p port ping</code>    </li>
 <li>动态参数启动 redis<br><code>redis-server --port 8088</code>  </li>
 <li>配置文件启动<br><code>redis-server configPath</code>  </li>
 </ol>
@@ -467,7 +468,7 @@ redis 127.0.0.1:6379&gt; smembers runoob
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

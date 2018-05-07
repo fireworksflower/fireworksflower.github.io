@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
+<meta name="description" content="pyton爬虫打造搜索引擎的学习心得1.创建虚拟机：virtualenv scrapytest2.启动虚拟机:进入虚拟机：cd scrapytest然后cd Scripts然后执行activate.bat,如果退出虚拟机则执行deactivate.bat3.用python3.5创建虚拟机：在虚拟环境scrapytest下Scripts下运行virtualenv -p D:\WorkSpace\py">
 <meta property="og:type" content="article">
-<meta property="og:title" content="elasticsearch第二篇">
-<meta property="og:url" content="http://yoursite.com/2018/04/25/elasticsearch第二篇/index.html">
+<meta property="og:title" content="python爬虫搜索引擎学习心得">
+<meta property="og:url" content="http://yoursite.com/2018/05/07/python爬虫搜索引擎学习心得/index.html">
 <meta property="og:site_name" content="ghost">
-<meta property="og:description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
+<meta property="og:description" content="pyton爬虫打造搜索引擎的学习心得1.创建虚拟机：virtualenv scrapytest2.启动虚拟机:进入虚拟机：cd scrapytest然后cd Scripts然后执行activate.bat,如果退出虚拟机则执行deactivate.bat3.用python3.5创建虚拟机：在虚拟环境scrapytest下Scripts下运行virtualenv -p D:\WorkSpace\py">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T02:06:36.242Z">
+<meta property="og:updated_time" content="2018-05-07T10:23:04.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="elasticsearch第二篇">
-<meta name="twitter:description" content="Mapping类似数据库中的表结构定义  作用  定义Index下的字段名(Field Name)   定义字段的类型,比如数值型,字符串型,布尔型等   定义倒排索引相关的配置,比如是否索引,记录  position等得到一个索引的mapping  GET /test_index/_mapping     自定义Mapping    禁止直接修改 Mapping中的字段类型一旦设定后,禁止直接修">
+<meta name="twitter:title" content="python爬虫搜索引擎学习心得">
+<meta name="twitter:description" content="pyton爬虫打造搜索引擎的学习心得1.创建虚拟机：virtualenv scrapytest2.启动虚拟机:进入虚拟机：cd scrapytest然后cd Scripts然后执行activate.bat,如果退出虚拟机则执行deactivate.bat3.用python3.5创建虚拟机：在虚拟环境scrapytest下Scripts下运行virtualenv -p D:\WorkSpace\py">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/25/elasticsearch第二篇/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/07/python爬虫搜索引擎学习心得/"/>
 
 
 
 
 
-  <title>elasticsearch第二篇 | ghost</title>
+  <title>python爬虫搜索引擎学习心得 | ghost</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/elasticsearch第二篇/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/python爬虫搜索引擎学习心得/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fireworks">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">elasticsearch第二篇</h1>
+          <h1 class="post-title" itemprop="name headline">python爬虫搜索引擎学习心得</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T11:10:25+08:00">
-                2018-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T18:07:29+08:00">
+                2018-05-07
               </time>
             
 
@@ -299,38 +299,7 @@
       
 
       
-        <h4 id="Mapping"><a href="#Mapping" class="headerlink" title="Mapping"></a>Mapping</h4><p><code>类似数据库中的表结构定义</code></p>
-<ul>
-<li><p>作用</p>
-<ul>
-<li>定义Index下的字段名(Field Name)  </li>
-<li>定义字段的类型,比如数值型,字符串型,布尔型等  </li>
-<li>定义倒排索引相关的配置,比如是否索引,记录  position等<br>得到一个索引的mapping  <code>GET /test_index/_mapping</code>  </li>
-</ul>
-</li>
-<li><p>自定义Mapping  </p>
-<ul>
-<li>禁止直接修改<br> Mapping中的字段类型一旦设定后,禁止直接修改,因为Lucene实现的倒排索引生成后不允许修改,可以重新建立新的索引,然后做reindex操作</li>
-<li>允许新增字段 <code>通过dynamic参数来控制字段的新增</code>  <ul>
-<li>true(默认)允许自动新增字段  </li>
-<li>false不允许自动新增字段,但是文档 可以正常写入,但无法对字段进行查询等操作  </li>
-<li>strict文档不能写入,报错<br>-几个设置</li>
-<li>copy_to<br><code>将该字段的值复制到目标字段,实现类似_all的作用,不会出现在_source中,只用来搜索</code></li>
-<li>index<br><code>控制当前字段是否索引,默认为true,即记录索引,false不记录,即不可搜索</code>  </li>
-<li>index_options用于控制倒排索引记录的内容,有如下4种配置:<ul>
-<li>docs只记录doc id  </li>
-<li>freqs记录doc id和term frequencies(词频)</li>
-<li>positions记录doc id,term frequencies和term position</li>
-<li>offsets记录doc id,term frequencies,term position和character offsets<br>text类型默认配置为positions,其他默认为docs<br>记录内容越多,占用空间越大</li>
-</ul>
-</li>
-<li>null_value<br><code>当字段遇到null值时的处理策略,默认为null,即空值,此时es会忽略该值,可以通过设定该值设定字段的默认值</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Dynamic Mapping<br><code>es是依靠JSON文档的字段来实现自动识别字段类型</code>  </li>
-</ul>
+        <h4 id="pyton爬虫打造搜索引擎的学习心得"><a href="#pyton爬虫打造搜索引擎的学习心得" class="headerlink" title="pyton爬虫打造搜索引擎的学习心得"></a>pyton爬虫打造搜索引擎的学习心得</h4><p>1.创建虚拟机：virtualenv scrapytest<br>2.启动虚拟机:进入虚拟机：cd scrapytest然后cd Scripts然后执行activate.bat,如果退出虚拟机则执行deactivate.bat<br>3.用python3.5创建虚拟机：在虚拟环境scrapytest下Scripts下运行virtualenv -p D:\WorkSpace\python3.5.3\python.exe scrapypy3<br>4.创建python项目：在进入虚拟机的情况下，执行scrapy startproject ArticleSpider创建python项目<br>5.镜像：<a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a><br>6.安装django:先下载压缩包，解压到与python同目录下，进入django目录，执行命令：python setup.py<br>7.创建python项目：在进入虚拟机的情况下，执行scrapy startproject ArticleSpider创建python项目<br>8.爬取网站：进入项目根目录，然后执行scrapy genspider jobbole blog.jobbole.com<br>9.启动spider:例如启动jobbole,需要进入项目根目录，然后安装pypiwin32,执行命令pip install pypiwin32,然后执行scrapy crawl jobbole<br>10.要在命令行爬取数据，例如爬取<a href="http://www.jobbole.com/网页的数据，执行命令scrapy" target="_blank" rel="noopener">http://www.jobbole.com/网页的数据，执行命令scrapy</a> shell <a href="http://www.jobbole.com/" target="_blank" rel="noopener">http://www.jobbole.com/</a><br>11.安装requests库，进入项目根目录，执行pip install requests<br>12.爬虫:自动获取网站数据的程序,关键是批量的获取<br>13.反爬虫:使用技术手段防止爬虫程序的方法<br>14.误伤:反爬技术将普通用户识别为爬虫,如果误伤过高,效果再好也不能用<br>15.拦截:成功拦截爬虫,一般拦截率越高,误伤率越高<br>16.反爬虫的目的:<br>    1).初级爬虫:简单粗暴,不管服务器压力,容易弄挂网站;<br>    2).数据保护;<br>    3).失控的爬虫:由于某些情况下,忘记或者无法关闭的爬虫<br>    4).商业竞争对手<br>17.安装随机切换user-agent进入虚拟环境中,执行pip install fake-useragent<br>18.西刺免费ip代理:提供了好多免费ip代理<br>19.安装selenium:pip install selenium(Selenium也是一个用于Web应用程序测试的工具。Selenium测试直接运行在浏览器中，就像真正的用户在操作一样。)<br>20.部署环境：在项目路径下执行scrapy-deploy bobby -p ArticleSpider<br>21.爬取jobbole网站命令:scrapy genspider jobbole blog.jobbole.com<br>22.在命令行查看爬取到的数据：先安装pypiwin32:pip install -i <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a> pypiwin32,然后再执行scrapy crawl jobbole<br>23,在cmd命令下查看爬取数据：1).scrapy shell <a href="http://web.jobbole.com/94332/" target="_blank" rel="noopener">http://web.jobbole.com/94332/</a><br>2).title = response.xpath(“/html/body/div[1]/div[3]/div[1]/div[1]/h1”)<br>3). title<br>4). 查看title的值执行title.extract()<br>5). 查看title的值执行title.extract()[0]<br>24.安装图片库 进入虚拟环境执行：pip install -i <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a> pillow<br>25.安装数据库驱动：pip install mysqlclient<br>26.在article虚拟环境中安装elasticsearch,执行命令：pip install elasticsearch-dsl<br>27.连接远端服务器：telent localhost 8080(8080是端口号)<br>28.爬虫停止，暂停：在项目中创建一个文件夹job_info,然后在控制台启动虚拟环境，执行scrapy crawl lagou -s JOBDIR=job_info/001<br>29.分布式爬虫的优点：<br>1).充分利用多机器的宽带加速爬取<br>2).充分利用多机的ip加速爬取速度</p>
 
       
     </div>
@@ -355,8 +324,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/25/elasticsearch第一篇/" rel="next" title="elasticsearch第一篇">
-                <i class="fa fa-chevron-left"></i> elasticsearch第一篇
+              <a href="/2018/05/02/数据库优化/" rel="next" title="数据库优化">
+                <i class="fa fa-chevron-left"></i> 数据库优化
               </a>
             
           </div>
@@ -364,10 +333,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/02/redis第一篇/" rel="prev" title="redis第一篇">
-                redis第一篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +448,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapping"><span class="nav-number">1.</span> <span class="nav-text">Mapping</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#pyton爬虫打造搜索引擎的学习心得"><span class="nav-number">1.</span> <span class="nav-text">pyton爬虫打造搜索引擎的学习心得</span></a></li></ol></div>
             
 
           </div>
