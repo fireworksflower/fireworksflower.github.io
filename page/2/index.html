@@ -942,7 +942,12 @@ where t.deptno = e.deptno;</code></p>
 数据库:是数据库表的集合,数据库服务器中可以创建多个数据库.
 表:类似于一个excel表格,用于存储数据
 表记录:即表中的一行数据
-</code></pre><h1 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h1><h3 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h3><pre><code>SQL,指结构化查询语言,全程是Structured QueryLanguage
+</code></pre><h3 id="数据库三范式"><a href="#数据库三范式" class="headerlink" title="数据库三范式"></a>数据库三范式</h3><ul>
+<li>第一范式:强调的是列的原子性,即列在不能分成其他几列.</li>
+<li>第二范式:首先满足第一范式,另外包含两部分内容,一是表必须有一个主键,二是没有包含在主键的列必须完全依赖于主键,而不能只依赖主键的一部分.  </li>
+<li>第三范式:首先满足第二范式,另外非主键列必须直接依赖于主键,不能存在传递依赖,即不能存在非主键列A依赖非主键列B,非主键列B依赖于主键的情况.</li>
+</ul>
+<h1 id="SQL语言"><a href="#SQL语言" class="headerlink" title="SQL语言"></a>SQL语言</h1><h3 id="SQL概述"><a href="#SQL概述" class="headerlink" title="SQL概述"></a>SQL概述</h3><pre><code>SQL,指结构化查询语言,全程是Structured QueryLanguage
 SQL是操作关系型数据库通用的语言
 SQL是非过程性语言
 SQL是一个标准,各大数据库厂商都根据该标准提供了实现.
