@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HashMapHashMap的数据结构数据结构中有数组和链表来实现对数据的存储,但这两者基本上是两个极端数组数组存储区间是连续的,占用内存严重,故空间复杂很大,但数组的二分查找时间复杂度小,为O(1);数组的特点是:寻址容易,插入和删除困难.链表链表存储区间离散,占用内存比较宽松,故空间复杂度很低,但时间复杂度很大,达(N).链表的特点是:寻址困难,插入和删除容易.哈希表寻址容易,插入删除也容易的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试总结一">
+<meta property="og:url" content="http://yoursite.com/2018/05/12/面试总结一/index.html">
+<meta property="og:site_name" content="ghost">
+<meta property="og:description" content="HashMapHashMap的数据结构数据结构中有数组和链表来实现对数据的存储,但这两者基本上是两个极端数组数组存储区间是连续的,占用内存严重,故空间复杂很大,但数组的二分查找时间复杂度小,为O(1);数组的特点是:寻址容易,插入和删除困难.链表链表存储区间离散,占用内存比较宽松,故空间复杂度很低,但时间复杂度很大,达(N).链表的特点是:寻址困难,插入和删除容易.哈希表寻址容易,插入删除也容易的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-14T08:57:00.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试总结一">
+<meta name="twitter:description" content="HashMapHashMap的数据结构数据结构中有数组和链表来实现对数据的存储,但这两者基本上是两个极端数组数组存储区间是连续的,占用内存严重,故空间复杂很大,但数组的二分查找时间复杂度小,为O(1);数组的特点是:寻址容易,插入和删除困难.链表链表存储区间离散,占用内存比较宽松,故空间复杂度很低,但时间复杂度很大,达(N).链表的特点是:寻址困难,插入和删除容易.哈希表寻址容易,插入删除也容易的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/12/面试总结一/"/>
+
+
+
+
+
+  <title>面试总结一 | ghost</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ghost</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/面试总结一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试总结一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:27:05+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h4 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h4><p><code>数据结构中有数组和链表来实现对数据的存储,但这两者基本上是两个极端</code><br><strong>数组</strong><br>数组存储区间是连续的,占用内存严重,故空间复杂很大,但数组的二分查找时间复杂度小,为O(1);数组的特点是:寻址容易,插入和删除困难.<br><strong>链表</strong><br>链表存储区间离散,占用内存比较宽松,故空间复杂度很低,但时间复杂度很大,达(N).链表的特点是:寻址困难,插入和删除容易.<br><strong>哈希表</strong><br>寻址容易,插入删除也容易的数据结构,也不会占用太多的内存空间.<br>1.哈希表是由数组和链表组成的,一个数组中,每个元素存储的是一个链表的头结点,一般情况下是通过hash(key)%len获得,也就是元素的key的哈希值对数组长度取模得到的,比如数组长度的len为16,key为12,28,12%16=12,28%16=12,所以key都存储到数组下标为12的位置.<br>2.hashMap其实是一个线性的数组实现的,所以理解为其存储数据的容器就是一个线性数组,这可能让我们很不解,一个线性的数组怎么实现按键值对实现的一个基础bean,我们上面说到HashMap的基础就是一个线性数组,这个数组就是Entry[],Map里面的内容都保存在Entry[]里面.<br><code>transient Entry[] table;</code></p>
+<h4 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h4><p>既然是线性数组,为什么能随机存取?这里HashMap用了一个小算法,大致是这样实现的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//存储时:</span><br><span class="line">int hash = key.hashCode();</span><br><span class="line">int index = hash % Entry[].length;</span><br><span class="line">Entry[index] = value;</span><br><span class="line">//取值时:</span><br><span class="line">int hash = key.hashCode();</span><br><span class="line">int index = hash % Entry[].length;</span><br><span class="line">return Entry[index];</span><br></pre></td></tr></table></figure></p>
+<p><strong>put</strong><br>1.疑问:如果两个key通过hash % Entry[].length得到的index相同,会不会有覆盖的危险?<br>答:这里HashMap里面用到链式数据结构的一个概念.上面我们提到Entry里面有一个next属性,作用是指向下一个Entry,打个比方,第一个键值对A进来,通过计算其key的hash得到的index=0,记做:Entry[0] = A.一会后又进来一个键值对B,通过计算其index也等于0,HashMap会这样做:B.next = A,Entry[0] = B,如果又进来C,index也等于0,那么C.next = B,Entry[0] = C;这样我们会发现index = 0的地方其实存取了A,B,C三个键值对,他们通过next这个属性链接在一起,所以疑问不用担心,也就是说数组中存储的是最后插入的元素.<br>2.当然HashMap里面包含了一些优化方面的实现,比如:Entry[]的长度一定后,随着map里面数据越来越长,这样同一个index的链就会很长,会不会影响性能?HashMap里面设置一个因子,随着map的size越来越大,Entry[]会以一定的规则加长长度.<br><strong>null key</strong><br>null key总是存放在Entry[]数组的第一个元素中.<br><strong>解决hash冲突的办法</strong><br>1.开放定址法(线性探测再散列,二次探测再散列,伪随机探测再散列)<br>2.再哈希法<br>3.链地址法<br>4.建立一个公共溢出区<br><strong>注</strong>java中HashMap的解决方法就是采用的链地址法 </p>
+<h4 id="HashMap和HashTable的区别"><a href="#HashMap和HashTable的区别" class="headerlink" title="HashMap和HashTable的区别"></a>HashMap和HashTable的区别</h4><p>HashMap和HashTable都实现了Map接口,但决定用哪一个之前先要弄清楚它们之间的分别,主要的区别有:线程安全性,同步,以及速度.<br>1.HashMap几乎可以等价于HashTable,除了HashMap是非synchronized的,并可以接受null(HashMap可以接受为null的键值(key)和值(value)而HashTable则不行).<br>2.HashMap是非synchronized,而Hashtable是synchronized,这意味着Hashtable是线程安全的,多个线程可以共享一个Hashtable;而如果没有正确同步的话,多个线程是不能共享HashMap的,Java 5提供了ConcurrentHashMap,它是HashTable的替代,比HashTable的扩展性更好.<br>3.另一个区别就是HashMap的迭代器是fail-fast迭代器,而HashTable的enumerator迭代器不是fail-fast的,所以当有其他线程改变了HashMap的结构(增加或者移除元素),将会抛出ConcurrentModificationException,但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常,但这并不是一个一定发生的行为,要看JVM.这条同样也是Enumeration和Iterator的区别.<br>4.由于HashTable是线程安全的也是synchronized,所以在单线程环境下它比HashMap要慢,如果你不需要同步,只需要单线程,那么使用HashMap性能要好过HashTable.<br>5.HashMap不能保证随着时间的推移Map中的元素次序是不变的.</p>
+<h3 id="面向对象思想"><a href="#面向对象思想" class="headerlink" title="面向对象思想"></a>面向对象思想</h3><p>1.面向对象的概念和应用已经超越了程序设计和软件开发,扩展到很,宽的范围,如数据库系统,交互式界面,应用结构,应用平台,分布式系统,网络管理结构,CAD技术,人工智能等领域.<br>2,起初,”面向对象”是指在程序设计中采用封装,继承,多态和抽象等设计方法,可是,这个定义显然不再适用,面向对象的思想已经涉及到软件开发的哥哥方面,如,面向对象分析(OOA),面向对象设计(OOD),面向对象的编程实现(OOP).<br><strong>注:</strong></p>
+<ul>
+<li>面向对象的分析(OOA):陈述需求,分析者必须同用户一块工作提炼需求,因为这样才表示了用户的真实意图,其中涉及对需求的分析及查找丢失的信息.</li>
+<li>面向对象的设计(OOD):把分析阶段的需求转变成符合成本和质量要求的,抽象的系统实现方案的过程,从面向对象分析到面向对象设计,是一个逐渐扩充模型的过程.</li>
+<li>面向对象的编程实现:采用面向对象方法挨罚软件的基本目的和主要优点是通过重用提高软件的生产率.<br>3,类是对象的抽象,对象是类的具体实现.<br>4,封装,继承,多态.<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3>1.数据结构相互之间的关系称为结构,有四类基本结构:集合,线性结构,树形结构,图状结构.集合结构除了属于一种类型外,别无其他关系,线性结构:元素之间存在一对一关系常见类型有:数组,链表,队列,栈,它们之间在操作上有所区别.例如:链表可在任意插入和删除元素.<br>2.常用数据结构:数组(静态数组,动态数组),线性表,链表(单向链表,双向链表,循环链表),队列,栈,树(二叉树,查找树,平衡树,线索,堆),图等的定义,存储和操作.  </li>
+<li>数组:一个数组可以分解成多个数组元素,这些数组元素可以是基本数据类型或是构造数据类型,因此按数组元素类型不同,数组又分为数值数组,字符数组,指针数组,结构数组等.</li>
+<li>栈:栈是只能在某一端插入和删除的特殊线性表,它按照先进后出的原则存储数据,先进入的数据被压入栈底,最后的数据在栈顶,需要读数据的时候从栈顶开始弹出数据,最后一个数据被第一个读出来.</li>
+<li>队列:一种特殊的线性表,它只允许在表的前端进行删除操作,而在标的后端进行插入操作,进行插入操作的端称为队尾,进行删除操作的端称为队头,队列中没有元素时,称为队空.</li>
+<li>链表:链表是一种物理单位上非连续,非顺序的存储结构,数据元素的逻辑顺序是通过链表中的指针链接次序实现的,链表由一系列结点(链表中的每一个元素称为结点)组成,结点可以在运行时动态生成,每个结点包含两个部分:一个存储数据元素的数据域,另一个是存储下一个结点地址的指针域.  </li>
+<li>树:树是包含n(n&gt;0)哥结点的有穷集合K,且在K中定义了一个关系N,N满足一下条件:<br>1).有且仅有一个结点KO,他对于关系N来说没有前驱,城KO为树的根节点,简称为根.<br>2).除KO外,K中的每个结点,对于关系N来说有且仅有一个前驱.<br>3).K中各结点,对关系N来说可以有m各后继结点(m&gt;=0).</li>
+<li>图:图是由结点的有穷集合V和边的集合E组成,其中,为了与树形结构加以区别,在图结构中常常将结点称为顶点,边是顶点的有序偶对,若两个顶点之间存在一条边,就表示这两个顶点具有相邻关系.  </li>
+<li>堆:堆是一种特殊的树形数据结构,每个结点都有一个值,通常我们所说的堆的数据结构,是指二叉堆,堆的特点是根据结点的值最小(或最大),且根结点的两个子树也是一个堆.  </li>
+<li>散列表:若结构中存在关键字和K相等的记录.则该记录必定在f(K)的存储位置上,由此,不需比较便可直接取得所查记录,称这个对应关系f为散列函数,按这个思想建立的表为散列表.<h3 id="spring在什么情况下线程不安全"><a href="#spring在什么情况下线程不安全" class="headerlink" title="spring在什么情况下线程不安全"></a>spring在什么情况下线程不安全</h3>1.Spring作为一个IOC/DI容器,帮助我们管理了许许多多的”bean”,但其实,Spring并没有保证这些对象的线程安全,需要由开发者自己编写解决线程安全问题的代码.<br>2.我们交由Spring管理的大多数对象其实都是一些无状态的对象,这种不会因为多线程而导致状态被破坏的对象适合Spring的默认scope,每个单里的无状态对象都是线程安全的(也就是说只要是无状态的对象,不管单例多例都是线程安全的,不过单例毕竟节省了不断创建对象与GC的开销).<br>3.无状态的对象即是自身没有状态的对象,自然也就不会因为多个线程的交替调度而破坏自身状态导致线程安全问题,无状态对象包括我们经常使用DO,DTO,VO这些只作为数据的实体模型的贫血对象,还有Service,DAO和Controller,这些对象并没有自己的状态,它们只是用来执行某些操作的.例如,每个DAO提供的函数都只是对数据的CRUD,而且每个数据库Connection都作为函数的局部变量(局部变量是在用户栈中的,而且用户栈本身就是线程私有的内存区域,所以不存在线程安全为题),用完即关(或交还给连接池).<br>4.有人可能认为,我使用request作用域不就可以避免每个请求之间的安全问题了吗?这是完全错误的,因为Controller默认是单例的,一个Http请求是会被多个线程执行的,这就又回到了线程安全问题.当然,你可以把Controller的scope改成prototype,但是Spring MVC对请求的拦截粒度是基于每个方法的,所以把Controller设为多例将会频繁的创建与回收对象,严重影响到了性能.  5.Spring根本没有对bean的多线程安全问题作出任何保证与措施,对于每个bean的线程安全问题,根本原因是每个bean自身的设计,不要在bean中声明任何有状态的实例变量或类变量,如果必须如此,那么就只能使用ThreadLocal把变量变为线程私有的,如果bean的实例变量或类变量需要在多个线程之间共享,那么就只能使用synchronized,lock,CAS等这些实现线程同步的方法了.<br><strong>注</strong><br>1.有状态对象就是有数据存储功能,有状态对象就是实例变量对象,可以保存数据,是非线程安全的,在不同方法调用间不保留任何状态.其实就是有数据成员的对象.<br>2.无状态就是一次操作,不能保存数据,无状态对象,就是没有实例变量的对象,不能保存数据,是不变类,是线程安全的,具体就是只有方法没有数据成员的对象,或者有数据成员但是数据成员是可读的对象.  <h3 id="Mysql的数据引擎"><a href="#Mysql的数据引擎" class="headerlink" title="Mysql的数据引擎"></a>Mysql的数据引擎</h3>Mysql的数据库引擎是InnoDB引擎,增加了事物处理,改进全文本搜索等的支持.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/12/面试一/" rel="next" title="面试一">
+                <i class="fa fa-chevron-left"></i> 面试一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">fireworks</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap的数据结构"><span class="nav-number">1.1.</span> <span class="nav-text">HashMap的数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap的存取实现"><span class="nav-number">1.2.</span> <span class="nav-text">HashMap的存取实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap和HashTable的区别"><span class="nav-number">1.3.</span> <span class="nav-text">HashMap和HashTable的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象思想"><span class="nav-number">2.</span> <span class="nav-text">面向对象思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">3.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring在什么情况下线程不安全"><span class="nav-number">4.</span> <span class="nav-text">spring在什么情况下线程不安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql的数据引擎"><span class="nav-number">5.</span> <span class="nav-text">Mysql的数据引擎</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fireworks</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
