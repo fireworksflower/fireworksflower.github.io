@@ -229,6 +229,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/15/面试总结二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/15/面试总结二/" itemprop="url">面试总结二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-15T18:40:00+08:00">
+                2018-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>hashMap为什么线程不安全</strong><br>hashMap在并发时可能出现的问题主要是两方面</p>
+<ul>
+<li>首先如果多个线程同时使用put方法添加元素,而且假设正好存在两个put的key发生碰撞(根据hash值计算的存储位置一样),这样最终就会发生一个线程的put的数据发生覆盖.</li>
+<li>第二就是如果多个线程同时检测到元素个数超过数组大小*加载因子,这样就会发生多个线程同时对Node数组进行扩容,都在重新计算元素位置以及复制数据,但是最终只有一个线程扩容后的数组会赋给table,也就是说其他线程都会丢失,并且各自线程put的数据也丢失.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/面试总结一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1592,128 +1716,6 @@ redis 127.0.0.1:6379&gt; smembers runoob
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/云上快速搭建WordPress网站/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fireworks">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ghost">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/云上快速搭建WordPress网站/" itemprop="url">云上快速搭建WordPress网站</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="关于LAMP"><a href="#关于LAMP" class="headerlink" title="关于LAMP"></a>关于LAMP</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;LAMP是指Linux(操作系统),Apache HTTP服务器,MySQL(有时也指MariaDB)数据库软件和PHP(有时也指Peri或Python)的首字母,一百用来建立web应用平台.和Java/J2EE架构相比,LAMP具有通用,跨平台,高性能,低价格的优势,因此LAMP无论是性能,质量还是价格都是企业搭建网站的首选平台.<br>&nbsp;&nbsp;&nbsp;&nbsp;Linux是一套免费使用和自由传播的类UNIX操作系统,目前运用最广泛使用人数最多的操作系统.<br>&nbsp;&nbsp;&nbsp;&nbsp;Apache是LAMP架构最核心Web Server,开源,稳定,模块丰富是Apache的优势,但Apache的缺点是有点臃肿,内存和CPU开销大,性能上有损耗,不如一些轻量级的Web服务器(例如ngnix)高效,轻量级的Web服务器对于静态文件的响应能力来说远高于Apache服务器.Apache做为Web Server是负载PHP的最佳选择,如果流量很大的话,可以采用ngnix来负载非PHP的Web请求.<br>&nbsp;&nbsp;&nbsp;&nbsp;PHP是一种通用开源脚本语言,语法吸收了C语言,Java和Perl的特点,利于学习,使用广泛,主要适用于Web开发领域,PHP独特的语法混合了C,Java,Perl以及PHP自创的语法,它可以比CGL或者Perl更快速地执行动态网页,用PHP做出的动态页面与其他的编程语言相比,PHP是将程序嵌入到HTML(标准通用标记语言下的一个应用)文档中去执行,执行效率比完全生成HTML标记的CGL要高出许多;PHP还可以执行编译后代码,编译可以达到加密和优化代码运行,使代码运行更快.<br>&nbsp;&nbsp;&nbsp;&nbsp;开源的数据库中,MySQL在性能,稳定性和功能上是首选,可以达到百万级别的数据存储,网站初期可以将MySQL和Web服务器放一起,但是当访问量达到一定规模后,应该将MySQL数据库从Web Server上独立出来,在单独的服务器上运行,同时保持Web Server和我MySQL服务器的稳定连接.  </p>
-<h3 id="关于WordPress"><a href="#关于WordPress" class="headerlink" title="关于WordPress"></a>关于WordPress</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;WordPress是一种使用PHP语言开发的博客平台,用户可以在支持PHP和MySQL数据库的服务器上架构WordPress.可以使用WordPress搭建一个简单的独立博客,也可以把WordPress当作一个内容管理系统(CMS),用来搭建一个小门户网站,现在的WordPress已经强大到几乎可以搭建目前所有常见类型的网站,比如门户,下载站,淘宝客,论坛,多博客等等.</p>
-<h2 id="关于CNZZ"><a href="#关于CNZZ" class="headerlink" title="关于CNZZ"></a>关于CNZZ</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;CNZZ是一个进行网页统计的平台,可以帮助站长收集网站上用户的浏览器分布,IP分布,流量等公开信息,方便网站管理,使得站长可以了解访问量变化,是不是被搜索引擎封杀等情况,及时作出应对.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1764,7 +1766,7 @@ redis 127.0.0.1:6379&gt; smembers runoob
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
