@@ -229,6 +229,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/24/Elastic-Stack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fireworks">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ghost">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/24/Elastic-Stack/" itemprop="url">Elastic Stack概述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T20:04:32+08:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Elastic-Stack概述"><a href="#Elastic-Stack概述" class="headerlink" title="Elastic Stack概述"></a>Elastic Stack概述</h3><ul>
+<li>elasticsearch是数据存储,查询与分析</li>
+<li>kibana是数据探索与可视化分析</li>
+<li>Beats,Logstash是数据收集与处理<h4 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h4></li>
+<li><p>安装elasticsearch<br>进入<a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">elasticsearch官网</a>,下载对应自己电脑型号和版本的压缩包,解压,进入bin目录,执行elasticsearch,启动elasticsearch</p>
+</li>
+<li><p>elasticsearch配置说明<br>1).cluster.name集群名称,以此作为是否同一集群的判断条件<br>2).node.name节点名称,以此作为集群中不同节点的区分条件<br>3).network.host/http.port网络地址和端口,用于http和transport服务使用<br>4).path.data数据存储地址<br>5).path.log日志存储地址</p>
+</li>
+<li><p>elasticsearch本地启动集群的方式<br>1).bin/elasticsearch<br>2).bin/elasticsearch -Ehttp.port=8200 -Epath.data=node2</p>
+</li>
+</ul>
+<ol start="3">
+<li>bin/elasticsearch -Ehttp.port=7200 -Epath.data=node3</li>
+</ol>
+<ul>
+<li><p>如何验证三个节点组成一个集群<br>在浏览器上输入<a href="http://127.0.0.1:7200/_cat/nodes" target="_blank" rel="noopener">http://127.0.0.1:7200/_cat/nodes</a>,<br>就会展示<br>127.0.0.1 27 58 8    mdi - ZSq9WKC<br>127.0.0.1 28 58 6    mdi - V8BTpaW<br>127.0.0.1 29 58 8    mdi * Z_C-ibU<br>如果出现就证明成功</p>
+</li>
+<li><p>如何判断哪个是主节点,哪个是从节点<br>在浏览器上输入<a href="http://127.0.0.1:7200/_cat/nodes?v" target="_blank" rel="noopener">http://127.0.0.1:7200/_cat/nodes?v</a><br>然后出来<br>ip        heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name<br>127.0.0.1   28    42  13              mdi       -      ZSq9WKC<br>127.0.0.1   28    42  13              mdi       -      V8BTpaW<br>127.0.0.1   29    42  13              mdi       <em>      Z_C-ibU<br>注:</em>代表主节点</p>
+</li>
+<li><p>如何查看集群的状态消息<br>在浏览器上输入<br><a href="http://127.0.0.1:7200/_cluster/stats" target="_blank" rel="noopener">http://127.0.0.1:7200/_cluster/stats</a></p>
+</li>
+<li>常用术语<br>1).Document文档数据<br>2).Index索引<br>3).Type索引中的数据类型<br>4).Field字段,文档的属性<br>5).Query DSL查询语法<h4 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h4></li>
+<li>下载kibana<br>进入<a href="https://www.elastic.co/cn/" target="_blank" rel="noopener">kibana官网</a>下载<br>进入kibana的bin目录下,执行kibana,就启动kibana了</li>
+<li>kibana.yml关键配置说明<br>1).server.host/server.port访问kibana用的地址和端口<br>2).elasticsearch.url待访问elasticsearch的地址</li>
+<li>kibana常用功能说明<br>1).Discover数据搜索查看<br>2).Visualize图表制作<br>3).Dashboard仪表盘制作<br>4).Timelion时序数据的高级可视化分析<br>5).DevTools开发者工具<br>6).Management配置<h4 id="beats"><a href="#beats" class="headerlink" title="beats"></a>beats</h4></li>
+<li>轻量级的数据传送<br>1).Filebeat日志文件<br>2).Metricbeat 度量数据<br>3).Packetbeat 网络数据<br>4).Winlogbeat Windows数据<br>5).Heartbeat健康检查</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/云上快速搭建WordPress网站/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1955,153 +2101,6 @@ select * from dept right join emp on dept.id=dept_id;</code></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/Md5加密算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fireworks">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ghost">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/22/Md5加密算法/" itemprop="url">MD5加密算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p></p><h3 style="text-align:center">MD5加密算法及应用</h3><p></p>
-<h2 id="MD5简介"><a href="#MD5简介" class="headerlink" title="MD5简介"></a>MD5简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;MD5即Message-Digest Algorithm(信息-摘要算法5),用于确保信息传输完整一致,是计算机广泛使用的杂凑算法之一(又译为<a href="https://baike.baidu.com/item/%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">摘要算法</a>和<a href="https://baike.baidu.com/item/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">哈希算法</a>),主流编程语言普遍已有MD5实现,就爱那个数据运算为另一固定长度值,值杂凑算法的基础原理,MD5的前身有MD2和MD3和MD4.  </p>
-<h2 id="MD5算法的特点"><a href="#MD5算法的特点" class="headerlink" title="MD5算法的特点"></a>MD5算法的特点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;1.压缩性:任意长度的数据,算出的MD5值长度都是固定的.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.容易计算:从元数据计算出MD5值很容易.<br>&nbsp;&nbsp;&nbsp;&nbsp;3.抗修改性:对原数据进行任何改动,哪怕只修改1个字节,所得到的MD5值都有很大区别.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.强抗碰撞:已知原数据和MD5值,想找到一个具有相同MD5值的数据(即伪造数据)是非常困难的.<br>&nbsp;&nbsp;&nbsp;&nbsp; </p>
-<h2 id="MD5的作用"><a href="#MD5的作用" class="headerlink" title="MD5的作用"></a>MD5的作用</h2><p>MD5的作用是让大容量信息在用<a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D" target="_blank" rel="noopener">数字签名</a>软件私人<a href="https://baike.baidu.com/item/%E5%AF%86%E9%92%A5" target="_blank" rel="noopener">密钥</a>前被<br>“<a href="https://baike.baidu.com/item/%E5%8E%8B%E7%BC%A9/130325
-01" target="_blank" rel="noopener">压缩</a>“成一种保密的格式(就是把一个任意长度的字节串变换成一定长的十六进制数字串).<br>&nbsp;&nbsp;&nbsp;&nbsp;创建一个类对MD5加密实现进行封装:</p>
-<pre><code>import java.math.BigInteger;  
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-public class MD5Utils {
-public static String md5(String plainText) {
-    byte[] secretBytes = null;
-    try {
-        secretBytes = MessageDigest.getInstance(&quot;md5&quot;).digest(
-                plainText.getBytes());
-    } catch (NoSuchAlgorithmException e) {
-        throw new RuntimeException(&quot;没有md5这个算法！&quot;);
-    }
-    String md5code = new BigInteger(1, secretBytes).toString(16);
-    for (int i = 0; i &lt; 32 - md5code.length(); i++) {
-        md5code = &quot;0&quot; + md5code;
-    }
-    return md5code;
-}
-}   
-</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;在LoginServlet中利用MD5加密对password进行加密 </p>
-<pre><code>String password = MD5Utils.md5(request.getParameter(&quot;password&quot;));
-</code></pre><p>附加图片:</p>
-<p><img src="http://res.cloudinary.com/fireworks/image/upload/v1512874801/Md5%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8_f4nehv.png" width="80%" height="10%" alt="MD5加密算法的原理及应用"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2152,7 +2151,7 @@ public static String md5(String plainText) {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
