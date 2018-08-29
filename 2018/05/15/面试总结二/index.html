@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="java," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="hashMap为什么线程不安全hashMap在并发时可能出现的问题主要是两方面  首先如果多个线程同时使用put方法添加元素,而且假设正好存在两个put的key发生碰撞(根据hash值计算的存储位置一样),这样最终就会发生一个线程的put的数据发生覆盖. 第二就是如果多个线程同时检测到元素个数超过数组大小*加载因子,这样就会发生多个线程同时对Node数组进行扩容,都在重新计算元素位置以及复制数据,">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试总结二">
 <meta property="og:url" content="http://yoursite.com/2018/05/15/面试总结二/index.html">
 <meta property="og:site_name" content="花姐学编程">
 <meta property="og:description" content="hashMap为什么线程不安全hashMap在并发时可能出现的问题主要是两方面  首先如果多个线程同时使用put方法添加元素,而且假设正好存在两个put的key发生碰撞(根据hash值计算的存储位置一样),这样最终就会发生一个线程的put的数据发生覆盖. 第二就是如果多个线程同时检测到元素个数超过数组大小*加载因子,这样就会发生多个线程同时对Node数组进行扩容,都在重新计算元素位置以及复制数据,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T08:12:58.332Z">
+<meta property="og:updated_time" content="2018-08-29T09:16:30.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试总结二">
 <meta name="twitter:description" content="hashMap为什么线程不安全hashMap在并发时可能出现的问题主要是两方面  首先如果多个线程同时使用put方法添加元素,而且假设正好存在两个put的key发生碰撞(根据hash值计算的存储位置一样),这样最终就会发生一个线程的put的数据发生覆盖. 第二就是如果多个线程同时检测到元素个数超过数组大小*加载因子,这样就会发生多个线程同时对Node数组进行扩容,都在重新计算元素位置以及复制数据,">
@@ -304,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/interview/" itemprop="url" rel="index">
-                    <span itemprop="name">interview</span>
+                  <a href="/categories/面试题/" itemprop="url" rel="index">
+                    <span itemprop="name">面试题</span>
                   </a>
                 </span>
 
@@ -392,6 +393,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
       
 
       
@@ -497,7 +504,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -508,7 +515,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
