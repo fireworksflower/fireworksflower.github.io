@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据库优化 要解决数据量大的问题，是避不开数据库优化的，数据库优化可以在不增加硬件的情况下提高处理效率，这是一种用技术换金钱的方式，数据库优化的方法非常多，常用的由表结构化，SQL语句优化，分区和分表，索引优化，适应存储过程代替直接操作等，另外有时候合理使用冗余也能获得非常好的效果。    表结构优化表结果优化是数据库中最基础也是最重要的，如果表结构优化得不合理，就可能导致严重的性能问题，具体怎么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库优化">
+<meta property="og:url" content="http://yoursite.com/2018/05/02/数据库优化/index.html">
+<meta property="og:site_name" content="花姐学编程">
+<meta property="og:description" content="数据库优化 要解决数据量大的问题，是避不开数据库优化的，数据库优化可以在不增加硬件的情况下提高处理效率，这是一种用技术换金钱的方式，数据库优化的方法非常多，常用的由表结构化，SQL语句优化，分区和分表，索引优化，适应存储过程代替直接操作等，另外有时候合理使用冗余也能获得非常好的效果。    表结构优化表结果优化是数据库中最基础也是最重要的，如果表结构优化得不合理，就可能导致严重的性能问题，具体怎么">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-02T06:44:04.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库优化">
+<meta name="twitter:description" content="数据库优化 要解决数据量大的问题，是避不开数据库优化的，数据库优化可以在不增加硬件的情况下提高处理效率，这是一种用技术换金钱的方式，数据库优化的方法非常多，常用的由表结构化，SQL语句优化，分区和分表，索引优化，适应存储过程代替直接操作等，另外有时候合理使用冗余也能获得非常好的效果。    表结构优化表结果优化是数据库中最基础也是最重要的，如果表结构优化得不合理，就可能导致严重的性能问题，具体怎么">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/02/数据库优化/"/>
+
+
+
+
+
+  <title>数据库优化 | 花姐学编程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">花姐学编程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总有一款文章适合你!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/数据库优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="花姐">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花姐学编程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库优化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-02T14:39:35+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h3><p> 要解决数据量大的问题，是避不开数据库优化的，数据库优化可以在不增加硬件的情况下提高处理效率，这是一种用技术换金钱的方式，数据库优化的方法非常多，常用的由表结构化，SQL语句优化，分区和分表，索引优化，适应存储过程代替直接操作等，另外有时候合理使用冗余也能获得非常好的效果。  </p>
+<ul>
+<li>表结构优化<br>表结果优化是数据库中最基础也是最重要的，如果表结构优化得不合理，就可能导致严重的性能问题，具体怎么设计更合理也没有固定不变的准则，需要根据实际情况具体处理。  </li>
+<li>SQL语句优化<br>SQL语句优化也是非常重要的，基础的SQL优化是语法层面的优化，不过更重要的是处理逻辑的优化，这也需要根据实际情况具体处理，而且要和索引缓存等配合使用。不过SQL优化有一个通用的做法就是，首先要将涉及大数据的业务的SQL语句执行时间详细记录下来，其次通过仔细分析日志（同一条语句对不同条件的执行时间也可能不同，这点也需要仔细分析）找出需要优化的语句和其中的问题，然后再有的放矢地优化，而不是不分重点对每条语句都花同样的时间和精力优化。 </li>
+<li>分区<br>当数据量变多的时候，如果可以分区或者分表，那将起到非常好的效果，当一张表中的数据量变多的时候操作速度就变慢了，所以很容易想到的就是将数据分到多个表中保存，但是这么做之后操作起来就麻烦了，像操作（增删查改）一个数据还需要先找到对应的表，如果涉及多个表还得跨表操作。其实在常用的数据库中可以不分表二达到跟分表类似的效果，那就是分区，分区就是将一张表中的数据按照一定的规则分到不同的区来保存，这样在查询数据时如果数据在同一个区内那么可以只对一个区的数据进行操作，这样操作的数据量更少，速度更快，而且这种方法对程序是透明的，程序不需要做任何改动。  </li>
+<li>分表<br>如果一个表中的数据可以分为几种固定不变的类型，而且如果同时对多种类型共同操作的情况不多，那么都可以通过份表来处理，这也需要具体情况具体对待。笔者之前对一个业务系统进行重构开发时就将其中保存工人工作卡片的数据表分成了三个表，并且对每个表进行分区，在同时使用缓存（主要用于在保存和修改时对其他表的数据获取中，如根据工人Id获取工人姓名，工人类别，所在单位，所在工段及班组等信息），索引，SQL优化等的情况下操作速度比原来提高了100倍以上，那时的分表是按照工作卡片的类型来划分的，因为当时的要求是要保留所有的记录，比如，修改了卡片的信息，则需要保存是谁在什么时候对卡片进行修改，修改前的数据是什么，添加删除也一样，这种需求一般的做法就是用一个字段来做卡片状态的标志位，将卡片分为不同的类型。不过这里由于数据量非常大所以就把卡片分别保存到了三个表中，第一个表保存正常卡片，第二个表保存删除后的卡片，第三个表保存修改之前的卡片，并且对每个表都进行了分区，由于报表都是按月份，季度，半年和年来做的，所以分区是按月份来分的，每个月一个分区，这样问题就解决了。<br>另外一种分表的方法是将一个表中不同类型的字段分到不同的表中保存，这么做最直接的好处就是增删查改数据的时候锁定的范围变小了，没被锁定的表中的数据不受影响，如果一个表的操作频率很高，在增删改其中一部分字段数据的同时另一部分字段也可能被操作，而且（主要指查询）用不到被增删改的字段，那么就可以把不同类型的字段分贝保存到不同的表中，这样就减少操作时锁定数据的范围了，不过这样分表之后，如果需要查询完整的数据就得使用多表操作了.  </li>
+<li>索引优化<br>索引的大致原理就是数据发生变化（增删改）的时候就预先制定字段的顺序排列后保存到一个类似表的结构中，这样在查找索引字段为条件的记录时就可以很快的从索引中找到对饮记录的指针并从表中获取到记录，这样速度就快多了。不过索引也是一把双刃剑，它在提高查询速度的同时也降低了增删改的速度，因为每次数据的变化都需要更新相应的索引，不过合理使用索引对提高查询速度的效果非常明显，所以对哪些字段使用索引，使用什么类型的索引都需要仔细琢磨，并且最好再做一些测试。  </li>
+<li>使用存储过程代替直接操作<br>在操作过程复杂而且调用频率高的业务中，可以通过使用存储过程代替直接操作来提高效率，因为存储过程只需要编译一次，而且可以在一个存储过程里面做一些复杂的操作。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://res.cloudinary.com/fireworks/image/upload/v1535525029/qrcode_for_gh_5dcb454905a4_258_1_zyzxhu.jpg" alt="花姐 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的赞赏是对我最大的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://res.cloudinary.com/fireworks/image/upload/v1535524604/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180829143622_kzfr3k.jpg" alt="花姐 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/redis第一篇/" rel="next" title="redis第一篇">
+                <i class="fa fa-chevron-left"></i> redis第一篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/07/python爬虫搜索引擎学习心得/" rel="prev" title="python爬虫搜索引擎学习心得">
+                python爬虫搜索引擎学习心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg"
+                alt="花姐" />
+            
+              <p class="site-author-name" itemprop="name">花姐</p>
+              <p class="site-description motion-element" itemprop="description">一份阅读,一份支持！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fireworksflower" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/kbh528202" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库优化"><span class="nav-number">1.</span> <span class="nav-text">数据库优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花姐</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% e
+</body>
+</html>

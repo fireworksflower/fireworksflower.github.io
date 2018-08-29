@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql练习">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/mysql练习/index.html">
+<meta property="og:site_name" content="花姐学编程">
+<meta property="og:description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-18T03:14:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql练习">
+<meta name="twitter:description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/22/mysql练习/"/>
+
+
+
+
+
+  <title>sql练习 | 花姐学编程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">花姐学编程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总有一款文章适合你!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/mysql练习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="花姐">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花姐学编程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">sql练习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="sql练习"><a href="#sql练习" class="headerlink" title="sql练习"></a>sql练习</h3><p><strong>创建数据库</strong><br><code>create database dbexecise;</code><br><strong>切换到dbexecise数据库</strong><br><code>use dbexecise;</code><br><strong>创建部门表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">	#部门编号</span><br><span class="line">	deptno int primary key,	</span><br><span class="line">	#部门名称</span><br><span class="line">	deptname varchar(50),	</span><br><span class="line">	# 部门位置	</span><br><span class="line">	loc varchar(50)				</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>部门表插入语句</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `dept` VALUES (&apos;10&apos;, &apos;会计部&apos;, &apos;北京&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;20&apos;, &apos;调查部&apos;, &apos;杭州&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;30&apos;, &apos;销售部&apos;, &apos;上海&apos;);</span><br><span class="line">INSERT INTO `dept` VALUES (&apos;40&apos;, &apos;营销部&apos;, &apos;深圳&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建员工表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">create table emp(	</span><br><span class="line">	#员工编号			</span><br><span class="line">	empno int primary key,	</span><br><span class="line">	#员工姓名	 </span><br><span class="line">	empname varchar(50),</span><br><span class="line">	#职位		</span><br><span class="line">	job varchar(50),	</span><br><span class="line">	#直属上级	</span><br><span class="line">	mgr int,</span><br><span class="line">	#受雇日期					</span><br><span class="line">	hiredate date,		</span><br><span class="line">	#薪资		</span><br><span class="line">	sal int,	</span><br><span class="line">	#奖金				</span><br><span class="line">	comm int,</span><br><span class="line">    #所在部门编号</span><br><span class="line">	deptno int,	</span><br><span class="line">	#外键				 </span><br><span class="line">	foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p><strong>员工表插入数据</strong></p>
+<pre><code>INSERT INTO `emp` VALUES (&apos;7369&apos;, &apos;张无忌&apos;, &apos;办事员&apos;, &apos;7902&apos;, &apos;1980-12-17&apos;, &apos;800&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7499&apos;, &apos;曹操&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-20&apos;, &apos;1600&apos;, &apos;300&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7521&apos;, &apos;杨志&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-22&apos;, &apos;1250&apos;, &apos;500&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7566&apos;, &apos;朱元璋&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-04-02&apos;, &apos;2975&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7654&apos;, &apos;殷天正&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-28&apos;, &apos;1250&apos;, &apos;1400&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7698&apos;, &apos;张三丰&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-05-01&apos;, &apos;2850&apos;, null, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7782&apos;, &apos;关羽&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-06-09&apos;, &apos;2450&apos;, null, &apos;10&apos;);
+INSERT INTO `emp` VALUES (&apos;7788&apos;, &apos;宋江&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1987-04-19&apos;, &apos;3000&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7839&apos;, &apos;韩少云&apos;, &apos;董事长&apos;, null, &apos;1981-11-17&apos;, &apos;5000&apos;, null, &apos;10&apos;);
+INSERT INTO `emp` VALUES (&apos;7844&apos;, &apos;孙二娘&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-08&apos;, &apos;1500&apos;, &apos;0&apos;, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7876&apos;, &apos;张飞&apos;, &apos;办事员&apos;, &apos;7788&apos;, &apos;1987-05-23&apos;, &apos;1100&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7900&apos;, &apos;赵云&apos;, &apos;办事员&apos;, &apos;7698&apos;, &apos;1981-12-03&apos;, &apos;950&apos;, null, &apos;30&apos;);
+INSERT INTO `emp` VALUES (&apos;7902&apos;, &apos;诸葛亮&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1981-12-03&apos;, &apos;3000&apos;, null, &apos;20&apos;);
+INSERT INTO `emp` VALUES (&apos;7934&apos;, &apos;夏侯惇&apos;, &apos;办事员&apos;, &apos;7782&apos;, &apos;1982-01-23&apos;, &apos;1300&apos;, null, &apos;10&apos;);
+</code></pre><p>###查询语句<br><strong>1.列出部门名称和这些部门的员工信息,同时列出那些没有员工的部门</strong><br><code>select deptname, empname, empno, emp.deptno from dept left join emp on emp.deptno=dept.deptno;</code><br><strong>2.列出薪资比关羽高的所有员工.</strong><br>1).查询出关羽的薪资<br><code>select sal from emp where empname=&#39;关羽&#39;</code><br>2).查询出比关羽薪资高的员工<br><code>select empno,empname,sal from emp where sal&gt;( SELECT sal from emp where empname=&#39;关羽&#39;);</code><br><strong>3.列出所有员工的姓名及其直接上级的姓名</strong><br>1).查询员工<br><code>select empno,mgr from emp e1;</code><br>2).查询员工的上级<br><code>select empno,empname from emp e2;</code><br>3).关联查询,查询出员工及员工对应的上级<br><code>select e1.empname,e2.empname from emp e1,emp e2 where e1.mgr = e2.empno;</code><br><strong>4.列出最低薪资大于1500的各种职位及其从事此职位的员工人数</strong><br>1).查询出各种职位的最低薪资<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal);</code><br>2).查询出最低薪资&gt;1500的职位<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal)&gt;1500;</code><br>3).查询出每个职位对应的员工人数<br><code>select job, min(sal) 最低薪资, count(*) 员工人数 from emp group by job having min(sal)&gt;1500;</code><br><strong>5.列出在销售部职位的员工姓名,假定不知道销售部的部门编号</strong><br>1).查询出销售部的部门编号<br><code>select deptno from dept where deptname=&#39;销售部&#39;;</code><br>2).查询出在销售部职位的员工姓名<br><code>select empname from emp where deptno=(select deptno from dept where deptname=&#39;销售部&#39;);</code><br><strong>6.列出与曹操从事相同职位的所有员工及部门名称</strong><br>1).查询出曹操从事的职位及部门编号<br><code>select job,deptno from emp where empname=&#39;曹操&#39;;</code><br>2).查询出与曹操从事相同职位的所有员工<br><code>select empname,deptno from emp where job=(select job from emp where empname=&#39;曹操&#39;);</code><br>3).查询出与曹操从事相同职位的所有员工及部门名称<br><code>select deptname,empname from dept,(select empname,deptno from emp  where job=(select job from emp where empname=&#39;曹操&#39;))e2 where dept.deptno=e2.deptno;</code><br><strong>7.列出薪资高于销售部(已知编号为30)就职的所有员工的薪资的员工姓名和薪资,部门名称</strong><br>1).查出在销售部就职的所有员工最高薪资<br><code>select max(sal) from emp where deptno=30;</code><br>2).关联查询, 查询员工的姓名,薪资, 部门名称<br><code>select e.empname,e.sal,d.deptname from emp e,dept d where e.deptno=d.deptno and sal&gt;(select max(sal) from emp where deptno=30);</code><br><strong>8.列出在每个部门职位的员工数量、平均工资。</strong><br><code>select count(*),avg(sal) from emp group by deptno;</code><br><strong>9.查出至少有一个员工的部门。显示部门人数、部门编号、部门名称、部门位置.</strong><br>1).查询出每个部门员工数量<br><code>select count(*),deptno from emp group by deptno;</code><br>2).关联查询,查询出部门编号、部门名称、部门位置<br><code>select i.c,d.deptname,d.loc,d.deptno from dept d,(select count(*) c,deptno from emp group by deptno)i  where i.deptno=d.deptno and i.c&gt;=1;</code><br><strong>10.列出受雇日期早于直接上级的所有员工的编号,姓名,部门名称</strong><br><code>select e1.empname, e1.empno, d.deptname from emp e1, emp e2, dept d where e1.deptno=d.deptno and e1.mgr=e2.empno and e1.hiredate &lt; e2.hiredate;</code><br><strong>11.列出所有职员的姓名及其部门名称，部门的人数。</strong><br><code>select t.empname, t.deptname, e.cnt 员工数量  from 
+(
+    select e.empname, e.deptno, d.deptname from emp e, dept d where e.deptno=d.deptno
+) t, (
+    select deptno, count(*) cnt from emp group by deptno
+) e
+where t.deptno = e.deptno;</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://res.cloudinary.com/fireworks/image/upload/v1535525029/qrcode_for_gh_5dcb454905a4_258_1_zyzxhu.jpg" alt="花姐 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的赞赏是对我最大的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://res.cloudinary.com/fireworks/image/upload/v1535524604/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180829143622_kzfr3k.jpg" alt="花姐 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/MYSQL和Oracle的区别/" rel="next" title="MYSQL和Oracle的区别">
+                <i class="fa fa-chevron-left"></i> MYSQL和Oracle的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/Redis/" rel="prev" title="Redis">
+                Redis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg"
+                alt="花姐" />
+            
+              <p class="site-author-name" itemprop="name">花姐</p>
+              <p class="site-description motion-element" itemprop="description">一份阅读,一份支持！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fireworksflower" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/kbh528202" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql练习"><span class="nav-number">1.</span> <span class="nav-text">sql练习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花姐</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% e
+</body>
+</html>

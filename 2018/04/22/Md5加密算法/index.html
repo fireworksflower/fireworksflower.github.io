@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MD5加密算法及应用 MD5简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MD5即Message-Digest Algorithm(信息-摘要算法5),用于确保信息传输完整一致,是计算机广泛使用的杂凑算法之一(又译为摘要算法和哈希算法),主流编程语言普遍已有MD5实现,就爱那个数据运算为另一固定长度值,值杂凑算法的基础原理,MD5的前身有MD2和MD3和MD4.   MD5算法的特点&amp;nbs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MD5加密算法">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/Md5加密算法/index.html">
+<meta property="og:site_name" content="花姐学编程">
+<meta property="og:description" content="MD5加密算法及应用 MD5简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MD5即Message-Digest Algorithm(信息-摘要算法5),用于确保信息传输完整一致,是计算机广泛使用的杂凑算法之一(又译为摘要算法和哈希算法),主流编程语言普遍已有MD5实现,就爱那个数据运算为另一固定长度值,值杂凑算法的基础原理,MD5的前身有MD2和MD3和MD4.   MD5算法的特点&amp;nbs">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://res.cloudinary.com/fireworks/image/upload/v1512874801/Md5%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8_f4nehv.png">
+<meta property="og:updated_time" content="2017-12-10T04:47:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MD5加密算法">
+<meta name="twitter:description" content="MD5加密算法及应用 MD5简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;MD5即Message-Digest Algorithm(信息-摘要算法5),用于确保信息传输完整一致,是计算机广泛使用的杂凑算法之一(又译为摘要算法和哈希算法),主流编程语言普遍已有MD5实现,就爱那个数据运算为另一固定长度值,值杂凑算法的基础原理,MD5的前身有MD2和MD3和MD4.   MD5算法的特点&amp;nbs">
+<meta name="twitter:image" content="http://res.cloudinary.com/fireworks/image/upload/v1512874801/Md5%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8_f4nehv.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/22/Md5加密算法/"/>
+
+
+
+
+
+  <title>MD5加密算法 | 花姐学编程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">花姐学编程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总有一款文章适合你!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/Md5加密算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="花姐">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花姐学编程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MD5加密算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p></p><h3 style="text-align:center">MD5加密算法及应用</h3><p></p>
+<h2 id="MD5简介"><a href="#MD5简介" class="headerlink" title="MD5简介"></a>MD5简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;MD5即Message-Digest Algorithm(信息-摘要算法5),用于确保信息传输完整一致,是计算机广泛使用的杂凑算法之一(又译为<a href="https://baike.baidu.com/item/%E6%91%98%E8%A6%81%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">摘要算法</a>和<a href="https://baike.baidu.com/item/%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">哈希算法</a>),主流编程语言普遍已有MD5实现,就爱那个数据运算为另一固定长度值,值杂凑算法的基础原理,MD5的前身有MD2和MD3和MD4.  </p>
+<h2 id="MD5算法的特点"><a href="#MD5算法的特点" class="headerlink" title="MD5算法的特点"></a>MD5算法的特点</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;1.压缩性:任意长度的数据,算出的MD5值长度都是固定的.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.容易计算:从元数据计算出MD5值很容易.<br>&nbsp;&nbsp;&nbsp;&nbsp;3.抗修改性:对原数据进行任何改动,哪怕只修改1个字节,所得到的MD5值都有很大区别.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.强抗碰撞:已知原数据和MD5值,想找到一个具有相同MD5值的数据(即伪造数据)是非常困难的.<br>&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<h2 id="MD5的作用"><a href="#MD5的作用" class="headerlink" title="MD5的作用"></a>MD5的作用</h2><p>MD5的作用是让大容量信息在用<a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D" target="_blank" rel="noopener">数字签名</a>软件私人<a href="https://baike.baidu.com/item/%E5%AF%86%E9%92%A5" target="_blank" rel="noopener">密钥</a>前被<br>“<a href="https://baike.baidu.com/item/%E5%8E%8B%E7%BC%A9/130325
+01" target="_blank" rel="noopener">压缩</a>“成一种保密的格式(就是把一个任意长度的字节串变换成一定长的十六进制数字串).<br>&nbsp;&nbsp;&nbsp;&nbsp;创建一个类对MD5加密实现进行封装:</p>
+<pre><code>import java.math.BigInteger;  
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+public class MD5Utils {
+public static String md5(String plainText) {
+    byte[] secretBytes = null;
+    try {
+        secretBytes = MessageDigest.getInstance(&quot;md5&quot;).digest(
+                plainText.getBytes());
+    } catch (NoSuchAlgorithmException e) {
+        throw new RuntimeException(&quot;没有md5这个算法！&quot;);
+    }
+    String md5code = new BigInteger(1, secretBytes).toString(16);
+    for (int i = 0; i &lt; 32 - md5code.length(); i++) {
+        md5code = &quot;0&quot; + md5code;
+    }
+    return md5code;
+}
+}   
+</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;在LoginServlet中利用MD5加密对password进行加密 </p>
+<pre><code>String password = MD5Utils.md5(request.getParameter(&quot;password&quot;));
+</code></pre><p>附加图片:</p>
+<p><img src="http://res.cloudinary.com/fireworks/image/upload/v1512874801/Md5%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8_f4nehv.png" width="80%" height="10%" alt="MD5加密算法的原理及应用"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://res.cloudinary.com/fireworks/image/upload/v1535525029/qrcode_for_gh_5dcb454905a4_258_1_zyzxhu.jpg" alt="花姐 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的赞赏是对我最大的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://res.cloudinary.com/fireworks/image/upload/v1535524604/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180829143622_kzfr3k.jpg" alt="花姐 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/java面试题总结/" rel="next" title="java面试题总结(一)">
+                <i class="fa fa-chevron-left"></i> java面试题总结(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/mysql/" rel="prev" title="mysql">
+                mysql <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg"
+                alt="花姐" />
+            
+              <p class="site-author-name" itemprop="name">花姐</p>
+              <p class="site-description motion-element" itemprop="description">一份阅读,一份支持！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fireworksflower" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/kbh528202" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">MD5加密算法及应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5简介"><span class="nav-number"></span> <span class="nav-text">MD5简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5算法的特点"><span class="nav-number"></span> <span class="nav-text">MD5算法的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5的作用"><span class="nav-number"></span> <span class="nav-text">MD5的作用</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花姐</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% e
+</body>
+</html>

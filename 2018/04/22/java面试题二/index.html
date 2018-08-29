@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.List,Set,Map是否继承自Collection接口?&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List,Set是,Map不是,Map是键值对映射容器,与List和Set有明显的区别,而Set存储的零散的元素且不允许有重复元素(数学中的集合也是如此),List是线性结构的容器,2.适用于按数值索引访问元素的情形.   2.阐述ArrayList,Vector,LinkedList的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java面试题二">
+<meta property="og:url" content="http://yoursite.com/2018/04/22/java面试题二/index.html">
+<meta property="og:site_name" content="花姐学编程">
+<meta property="og:description" content="1.List,Set,Map是否继承自Collection接口?&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List,Set是,Map不是,Map是键值对映射容器,与List和Set有明显的区别,而Set存储的零散的元素且不允许有重复元素(数学中的集合也是如此),List是线性结构的容器,2.适用于按数值索引访问元素的情形.   2.阐述ArrayList,Vector,LinkedList的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-04T03:41:26.749Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java面试题二">
+<meta name="twitter:description" content="1.List,Set,Map是否继承自Collection接口?&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;List,Set是,Map不是,Map是键值对映射容器,与List和Set有明显的区别,而Set存储的零散的元素且不允许有重复元素(数学中的集合也是如此),List是线性结构的容器,2.适用于按数值索引访问元素的情形.   2.阐述ArrayList,Vector,LinkedList的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/22/java面试题二/"/>
+
+
+
+
+
+  <title>java面试题二 | 花姐学编程</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">花姐学编程</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">总有一款文章适合你!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/java面试题二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="花姐">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花姐学编程">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java面试题二</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
+                2018-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-List-Set-Map是否继承自Collection接口"><a href="#1-List-Set-Map是否继承自Collection接口" class="headerlink" title="1.List,Set,Map是否继承自Collection接口?"></a>1.List,Set,Map是否继承自Collection接口?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;List,Set是,Map不是,Map是键值对映射容器,与List和Set有明显的区别,而Set存储的零散的元素且不允许有重复元素(数学中的集合也是如此),List是线性结构的容器,2.适用于按数值索引访问元素的情形.  </p>
+<h3 id="2-阐述ArrayList-Vector-LinkedList的存储性能和特性"><a href="#2-阐述ArrayList-Vector-LinkedList的存储性能和特性" class="headerlink" title="2.阐述ArrayList,Vector,LinkedList的存储性能和特性."></a>2.阐述ArrayList,Vector,LinkedList的存储性能和特性.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;ArrayList和Vector都是使用数组方式存储数据,此数组元素数大于实际存储的数据以便增加和插入元素,它们都允许直接按序号索引元素,但是插入元素要涉及数组元素移动等内存操作,所以索引数据快而插入数据慢,Vector中的方法由于添加了synchronized修饰,因此Vector是线程安全的容器,但性能上较ArrayList差,因此已经是java中的遗留容器.<br>&nbsp;&nbsp;&nbsp;&nbsp;LinkedList使用双向链表实现存储(将内存中零散的内存单元通过附加的引用关联起来,形成一个可以按序号索引的线性结构,这种链式存储方式与数组的连续存储方式相比,内存的利用率更高),按序号索引数据需要进行前向或后向遍历,但是插入数据时只需要记录本项的前后项即可,所有插入速度快.Vector属于遗留问题(java早期的版本中提供的容器,除此之外,Hashtable,Dictionary,BitSet,Stack,Properties都是遗留容器),已经不推荐使用,但是由于ArrayList和LinkedList都是非线程安全的,如果遇到多个线程操作同一个容器的场景,则可以通过工具类Collections中的synchronizedList方法将其转换成线程安全的容器后再使用.  </p>
+<h3 id="3-Collection和Collections的区别"><a href="#3-Collection和Collections的区别" class="headerlink" title="3.Collection和Collections的区别?"></a>3.Collection和Collections的区别?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Collection是一个接口,它是Set,List等容器的父接口;Collections是一个工具类,提供了一系列的静态方法来辅助容器操作,这些方法包括对容器的搜索,排序,线程安全化等等.  &nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h3 id="4-List-Map-Set三个接口存储元素时-各有什么特点"><a href="#4-List-Map-Set三个接口存储元素时-各有什么特点" class="headerlink" title="4.List,Map,Set三个接口存储元素时,各有什么特点?"></a>4.List,Map,Set三个接口存储元素时,各有什么特点?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>List:</strong>元素有放入顺序,元素可重复,可以根据元素的索引来访问;<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Map:</strong>元素按键值对存储,无放入顺序,可以根据每项元素的key来访问其value;<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Set:</strong>元素无放入顺序,元素不可重复(注意:元素虽然无放入顺序,但是元素在Set中的位置是由元素的HashCode决定的,位置其实是固定的;用对象的equals()方法来区分元素是否重复),只能根据元素本身来访问(这也是set集合不允许重复的原因).  </p>
+<h3 id="5-Thread类的sleep-方法和yield-方法的区别如下"><a href="#5-Thread类的sleep-方法和yield-方法的区别如下" class="headerlink" title="5.Thread类的sleep()方法和yield()方法的区别如下."></a>5.Thread类的sleep()方法和yield()方法的区别如下.</h3><ul>
+<li>sleep()方法暂停当前线程后,会给其他线程执行机会,不会理会其他线程的优先级;但是yield()方法只会给优先级相同,或优先级更高的线程执行机会.  </li>
+<li>sleep()方法会将线程转入阻塞状态,直到经过阻塞时间才会转入就绪状态;而yield()方法不会将线程转入阻塞状态,它只是强调当前线程进入就绪状态,因此完全有可能某个线程调用yield()方法暂停之后,立即再次获得处理器资源被执行.  </li>
+<li>sleep()方法声明抛出了InterruptedException异常,所以调用sleep()方法时要么捕捉该异常,要么显示声明抛出该异常;而yield()方法则没有声明抛出任何异常.  </li>
+<li>sleep()方法比yield()方法有更好的可移植性,通常不建议使用yield()方法来控制并发线程的执行</li>
+</ul>
+<h3 id="6-HashSet具有什么特点"><a href="#6-HashSet具有什么特点" class="headerlink" title="6.HashSet具有什么特点?"></a>6.HashSet具有什么特点?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;1.不能保证元素的排列顺序,顺序可能与添加顺序不同,顺序也有可能发生改变.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.HashSet不是同步的,如果多个线程同时访问一个HashSet,假设有两个或者两个以上线程同时修改了HashSet集合时,则必须通过代码来保证其同步.<br>&nbsp;&nbsp;&nbsp;&nbsp;3.集合元素值可以是null.  </p>
+<h3 id="7-简述并发性和并行性"><a href="#7-简述并发性和并行性" class="headerlink" title="7.简述并发性和并行性?"></a>7.简述并发性和并行性?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;并发性和并行性是两个概念,并行指在同一个时刻,有多条指令在多个处理器上同时执行; 并发性指在同一时刻只能有一条指令执行,但多个进程指令被快速轮换执行,使得在宏观上具有多个进程同时执行的效果.  </p>
+<h3 id="8-进程和线程的区别"><a href="#8-进程和线程的区别" class="headerlink" title="8.进程和线程的区别?"></a>8.进程和线程的区别?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;进程和线程的主要差别在于它们是不同的操作系统资源管理方式.进程有独立的地址空间,一个进程崩溃后,在保护模式下不会对其他进程产生影响,而线程只是一个进程中的不同执行路径,线程有自己的堆栈和局部变量,但线程之间没有单独的地址空间,一个线程死掉就等于整个进程死掉,所以多进程的程序要比多线程的程序健壮,但在进程切换时,好肥资源较大,效率较差一些,但对于一些要求同时进行并且又要共享某些变量的并发操作,只能影片能够线程,不能用进程.<br>&nbsp;&nbsp;&nbsp;&nbsp;1.简而言之,一个程序至少有一个进程,一个进程至少有一个线程.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.线程的划分尺度小于进程,使得多线程程序的并发性高.<br>&nbsp;&nbsp;&nbsp;&nbsp;3.另外,进程在执行过程中拥有独立的内存单元,而多个线程共享内存,从而极大地提高了程序的运行效率.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.线程在执行过程中与进程还是有区别额.每个独立的线程有一个程序运行的入口,顺序执行序列和程序的出口,但是线程不能够独立运行,必须依存在应用程序中,由应用程序提供多个线程执行控制.<br>&nbsp;&nbsp;&nbsp;&nbsp;5.从逻辑角度来看,多线程的意义在于一个应用程序中,有多个执部分可以同时执行,但操作系统并没有将多个侠女横看作多个独立的应用,来实现进程的调度和管理以及资源分配,这就是进程和线程的重要区别.  </p>
+<h3 id="9-创建线程的三种方式对比"><a href="#9-创建线程的三种方式对比" class="headerlink" title="9.创建线程的三种方式对比"></a>9.创建线程的三种方式对比</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;通过继承Thread类或实现Runnable,callable接口都可以实现多线程,不过实现Runnable接口与实现Callable接口的方式基本相同,只是Callable接口里定义的方法有返回值,可以声明抛出异常而已,因此可以将实现Runnable接口和实现Callable接口归为一种方式.这种方式与继承Thread方式之间的主要差别如下:<br>&nbsp;&nbsp;&nbsp;&nbsp;采用实现Runnable,Callable接口的方式创建多线程的优缺点:  </p>
+<ul>
+<li>线程类只是实现了Runnable接口或Callable接口,还可以继承其他类.  </li>
+<li>在这种方式下,多个线程可以共享同一个target对象,所以非常适合多个相同线程来处理同一份资源的情况,从而可以将CPU,代码和数据分开,形成清晰的模型,较好额体现了面向对象的思路.  </li>
+<li>劣势是,编程稍稍复杂,如果需要访问当前线程,则必须使用Thread.currentThread()方法.  </li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;采用继承Thread类的方式创建多线程的优缺点:  </p>
+<ul>
+<li>劣势是,因为线程类已经继承了Thread类,所以不能再继承其他父类.  </li>
+<li>优势是,编写简单,如果需要访问当前线程,则无须使用Thread.currentThread()方法,直接使用this即可获得当前线程.  </li>
+</ul>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;鉴于上面分析,因此一般推荐采用实现Runnable接口,Callable接口的方式来创建多线程. </p>
+<h3 id="10-简述获取Class对象的方法"><a href="#10-简述获取Class对象的方法" class="headerlink" title="10.简述获取Class对象的方法?"></a>10.简述获取Class对象的方法?</h3><ul>
+<li>使用Class类的forName(String clazzName)静态方法.该方法需要传入字符串参数,该字符串参数的值是某个类的全限定类名(必须添加完整包名).  </li>
+<li>调用某个类的class属性来获得该类对应的Class对象,例如,Person.class将会返回Person类对应的Class对象.  </li>
+<li>调用某个对象的getClass()方法,该方法是java.lang.Object类中的一个方法,所以所有的java对象都可以调用该方法,该方法将会返回该对象所属类对应的Class对象.  </li>
+</ul>
+<h3 id="11-简述通过反射生成对象的方式"><a href="#11-简述通过反射生成对象的方式" class="headerlink" title="11.简述通过反射生成对象的方式?"></a>11.简述通过反射生成对象的方式?</h3><ul>
+<li>使用Class对象的newInstance()方式来创建Class对象对应类的实例,这种方式要求该Class对象的对应类有默认构造器,而执行newInstance()方法时实际上是利用构造器来创建该类的实例.  </li>
+<li>先使用Class对象获取指定的Constructor对象,再调用Constructor对象的newInstance()方法来创建该Class对象对应类的实例,通过这种方式可以选择使用指定的构造器来创建实例.  </li>
+</ul>
+<h3 id="12-现有三个类-Root-Mid和Leaf-这三个类都提供了静态初始化块和普通初始化块-构造函数-简述每个方法的执行顺序"><a href="#12-现有三个类-Root-Mid和Leaf-这三个类都提供了静态初始化块和普通初始化块-构造函数-简述每个方法的执行顺序" class="headerlink" title="12.现有三个类:Root,Mid和Leaf,这三个类都提供了静态初始化块和普通初始化块,构造函数,简述每个方法的执行顺序?"></a>12.现有三个类:Root,Mid和Leaf,这三个类都提供了静态初始化块和普通初始化块,构造函数,简述每个方法的执行顺序?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;先执行父类的静态初始化块,依次再执行子类的初始化块,然后执行父类的普通初始化块,父类的构造器,依次执行子类的普通初始化块,子类的构造器.  </p>
+<h3 id="13-简述Error和Exception的区别和关系"><a href="#13-简述Error和Exception的区别和关系" class="headerlink" title="13.简述Error和Exception的区别和关系."></a>13.简述Error和Exception的区别和关系.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Error(错误)一般指与虚拟机相关的问题,表示系统级的错误和程序不必处理的异常,是java运行环境中的内部错误或者硬件问题,比如:内存资源不足,系统崩溃,虚拟机错误,动态链接失败等,对于这种错误,程序基本无能为力,除了退出运行外别无选择,它是由java虚拟机抛出的.<br>&nbsp;&nbsp;&nbsp;&nbsp;Exception(违例)表示需要捕捉或者需要程序进行处理的异常,它处理的是因为程序设计的瑕疵而引起的问题或者在外的输入等引起的一般性问题,是程序必须处理的.<br>&nbsp;&nbsp;&nbsp;&nbsp;Exception又分为运行时异常,受检查异常.<br>&nbsp;&nbsp;&nbsp;&nbsp;运行时异常,表示无法让程序恢复的异常,导致的原因通常是因为执行了错误的操作,建议终止程序,因此,编译器不检查这些异常.<br>&nbsp;&nbsp;&nbsp;&nbsp;受检查异常,表示程序可以处理的异常,也即表示程序可以修复(由程序自己接受异常并且做出处理),所以称之为受检查异常.  </p>
+<h3 id="14-checked异常和runtime异常的区别"><a href="#14-checked异常和runtime异常的区别" class="headerlink" title="14.checked异常和runtime异常的区别."></a>14.checked异常和runtime异常的区别.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Checked异常体现了java的设计哲学没有完善错误的代码根本不会被执行.<br>&nbsp;&nbsp;&nbsp;&nbsp;对Checked异常的处理方式有如下两种.<br>&nbsp;&nbsp;&nbsp;&nbsp;1).当前方法明确知道如何处理该异常,程序应该使用try…catch块类捕获该异常,然后在对应的catch块中修复该异常.<br>&nbsp;&nbsp;&nbsp;&nbsp;2).当前方法不知道如何处理这种异常,应该在定义该方法时声明抛出该异常.<br>&nbsp;&nbsp;&nbsp;&nbsp;Runtime异常则不知道如何处理这种异常,应该在定义该方法时声明抛出异常.  </p>
+<h3 id="15-finally中的代码一定会执行吗"><a href="#15-finally中的代码一定会执行吗" class="headerlink" title="15.finally中的代码一定会执行吗?"></a>15.finally中的代码一定会执行吗?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;当只有在try或者catch中调用退出JVM的相关方法,此时finally才不会执行,否则finally永远会执行.  </p>
+<h3 id="16-throw和throws的区别"><a href="#16-throw和throws的区别" class="headerlink" title="16.throw和throws的区别?"></a>16.throw和throws的区别?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;1).throw(针对对象的做法):<br>抛出一个异常,可以是系统定义的,也可以是自定义的.自行抛出异常常使用throw语句来完成.<br>&nbsp;&nbsp;&nbsp;&nbsp;throw语句可以单独使用,throw抛出的不是异常类,而是一个异常实例,而且每次只能抛出一个异常实例.<br>&nbsp;&nbsp;&nbsp;&nbsp;2).throws(针对一个方法抛出的异常):<br>&nbsp;&nbsp;&nbsp;&nbsp;抛出一个异常,可以是系统定义的,也可以是自定义的.<br>&nbsp;&nbsp;&nbsp;&nbsp;throws声明抛出只能在方法签名中使用,throws可以声明抛出多个异常类,多个异常类以逗号隔开.  </p>
+<h3 id="17-列举5个常见的Runtime异常类"><a href="#17-列举5个常见的Runtime异常类" class="headerlink" title="17.列举5个常见的Runtime异常类."></a>17.列举5个常见的Runtime异常类.</h3><p>1).ArithmeticException:算术异常<br>2).NullPointerException:空指针异常<br>3).ArrayIndexOutOfBoundsException:数组索引越界<br>4).StringIndexOutOfBoundsExcption:String操作中索引越界<br>5).NumberFormatException:数字格式化异常<br>6).ClassCastException:类型强制转换异常  </p>
+<h3 id="18-说说HashMap和HashTable的区别"><a href="#18-说说HashMap和HashTable的区别" class="headerlink" title="18.说说HashMap和HashTable的区别"></a>18.说说HashMap和HashTable的区别</h3><p>1). 执行效率不同:<br>&nbsp;&nbsp;&nbsp;&nbsp;HashMap没有采用synchronized修饰,所以线程是不安全的.<br>&nbsp;&nbsp;&nbsp;&nbsp;HashTable采用synchronized来保证线程安全,在线程竞争激烈的情况下,效率非常低.<br>2).继承类不同:<br>&nbsp;&nbsp;&nbsp;&nbsp;HashMap继承AbstractMap<br>HashTable继承Dictionary<br>3).put方法对key和value的要求不同<br>&nbsp;&nbsp;&nbsp;&nbsp;HashMap允许Entry的key或value为null<br>&nbsp;&nbsp;&nbsp;&nbsp;HashTable不允许Entry的key或value为null,否则出现NullPointerException<br>4).有无contains方法<br>&nbsp;&nbsp;&nbsp;&nbsp;HashMap没有contains方法<br>&nbsp;&nbsp;&nbsp;&nbsp;HashTable有contains方法  </p>
+<h3 id="19-TreeMap和TreeSet在排序时如何比较元素-Collections工具类中的sort-方法如何比较元素"><a href="#19-TreeMap和TreeSet在排序时如何比较元素-Collections工具类中的sort-方法如何比较元素" class="headerlink" title="19.TreeMap和TreeSet在排序时如何比较元素?Collections工具类中的sort()方法如何比较元素?"></a>19.TreeMap和TreeSet在排序时如何比较元素?Collections工具类中的sort()方法如何比较元素?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;TreeSet要求存放的对象所属的类必须实现Comparable接口,该接口提供了比较元素的compareTo()方法,当插入元素时会回调该方法比较元素的大小,TreeMap要求存放的键值对映射的键必须实现Comparable接口从而根据键对元素进行排序.Collections工具类的sort方法有两种重载的形式,第一种要求传入的待排序容器中存放的对象比较实现Comparable接口以实现元素的比较;第二种不强制性的要求容器中的元素必须可比较,但是要求传入第二个参数,参数是Comparator接口的子类型(需要重写compare方法实现元素的比较),相当于一个临时定义的排序规则,其实就是通过注入比较元素大小的算法,也是对回调模式的应用(java中对函数式编程的支持).  </p>
+<h3 id="20-方法和对象的wait-方法都可以让线程暂停执行-它们有什么区别"><a href="#20-方法和对象的wait-方法都可以让线程暂停执行-它们有什么区别" class="headerlink" title="20.()方法和对象的wait()方法都可以让线程暂停执行,它们有什么区别?"></a>20.()方法和对象的wait()方法都可以让线程暂停执行,它们有什么区别?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;sleep()方法是线程的静态方法,调用此方法会让当前线程暂停执行指定的时间,将执行机会(CPU)让给其他线程,但是对象的锁依然保持,因此休眠时间结束后会自动恢复(线程回到就绪状态),wait()方法是Object类的方法,调用对象的wait()方法导致当前线程放弃对象的锁(线程暂停执行),进入对象等待池,只有调用对象的notify()方法(或notifyAll()方法)时才能唤醒等待池中的线程进入等锁池,如果线程重新获得对象的锁就可以进入就绪状态.  </p>
+<h3 id="21-当一个线程进入一个对象的synchronized方法A之后-其他线程是否可进入此对象的synchronized方法B"><a href="#21-当一个线程进入一个对象的synchronized方法A之后-其他线程是否可进入此对象的synchronized方法B" class="headerlink" title="21.当一个线程进入一个对象的synchronized方法A之后,其他线程是否可进入此对象的synchronized方法B?"></a>21.当一个线程进入一个对象的synchronized方法A之后,其他线程是否可进入此对象的synchronized方法B?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;不能,其他线程只能访问该线程非同步方法,同步方法则不能进入,因为非静态方法上的synchronized修饰符要求执行方法时要获得对象的锁,如果已经进入A方法说明对象锁已经被取走,那么试图进入B方法的线程就只能在等待锁中等待对象的锁.  </p>
+<h3 id="22-请说出与线程同步以及线程调度相关的方法"><a href="#22-请说出与线程同步以及线程调度相关的方法" class="headerlink" title="22.请说出与线程同步以及线程调度相关的方法?"></a>22.请说出与线程同步以及线程调度相关的方法?</h3><ul>
+<li>wait():使一个线程处于等待(阻塞)状态,并且释放所持有的对象的锁;  </li>
+<li>sleep():使一个正在运行的线程处于睡眠状态,是一个静态方法,调用此方法要处理InterruptedException异常.  </li>
+<li>notify():唤醒一个处于等待状态的线程,当然在调用此方法的时候,并不能确切的唤醒某一个等待状态的线程,而是由JVM确定唤醒哪个线程,而且与优先级无关.  </li>
+<li>nitifyAll():唤醒所有处于等待状态的线程,该方法 并不是将对象的锁给所有线程,而是让它们竞争,只有获得了锁的线程才能进入就绪状态.  </li>
+</ul>
+<h3 id="23-举例说明同步和异步"><a href="#23-举例说明同步和异步" class="headerlink" title="23.举例说明同步和异步."></a>23.举例说明同步和异步.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;如果系统中存在临界资源(资源数量少于竞争资源的线程数量的资源),例如正在写的数据以后可能被另一个线程读到,或者正在读的数据可能已经被另一个线程写过了,那么这些数据就必须进行同步存取(数据库操作中的排他锁就是最好的例子),当应用程序在对象上调用了一个需要花费很长时间来执行的方法,并且不希望让程序等待方法的返回时,就应该使用异步编程,在很多情况下采用异步途径往往更有效率,事实上,所谓的同步就是指阻塞式操作,而异步就是非阻塞式操作.  </p>
+<h3 id="24-方法还是start-方法"><a href="#24-方法还是start-方法" class="headerlink" title="24.()方法还是start()方法?"></a>24.()方法还是start()方法?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;启动一个线程是调用start()方法,使线程锁代表的虚拟机处于可运行状态,这意味着它可以由JVM调度并执行,这并不意味着线程就会立即执行,run()方法是线程启动后要进行回调的方法.  </p>
+<h3 id="25-什么是线程池"><a href="#25-什么是线程池" class="headerlink" title="25.什么是线程池?"></a>25.什么是线程池?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;线程池顾名思义就是事先创建若干可执行的线程放入一个池(容器)中,需要的时候从池中获取线程不用自行创建,使用完毕不需要销毁线程而是放回池中,从而减少创建和销毁线程对象的开销.  </p>
+<h3 id="26-简述synchronized和java-util-concurrent-locksLock的异同"><a href="#26-简述synchronized和java-util-concurrent-locksLock的异同" class="headerlink" title="26.简述synchronized和java.util.concurrent.locksLock的异同."></a>26.简述synchronized和java.util.concurrent.locksLock的异同.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Lock是java 5以后引入的API,和关键字synchronized相比主要相同点:Lock能完成synchronized锁实现的所有功能;主要不同点:Lock有比synchronized更精确的线程语义和更好的性能,而且不强制性的要求一定要获得锁,synchronized会自动释放锁,而Lock一定要求程序员手工释放,并且最好zaifinally块中释放(这是释放外部资源的最好的地方).  </p>
+<h3 id="27-java中有集中类型的流"><a href="#27-java中有集中类型的流" class="headerlink" title="27.java中有集中类型的流?"></a>27.java中有集中类型的流?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;字节流和字符流,字节流继承于InputStream,OutputStream,字节流继承于Reader,Writer.在java.io包中还有许多其他的流,主要是为提高性能和使用方便,关羽java的I/O需要注意两点:一是两种对称性(输入和输出的对程序,字节和字符的对程性);二是两种设计模式(适配器和装饰模式).另外java中的流不同于C#的是它只有一个维度一个方向.   </p>
+<h3 id="28-Statement和PreparedStatement有什么区别-哪个性能更好"><a href="#28-Statement和PreparedStatement有什么区别-哪个性能更好" class="headerlink" title="28.Statement和PreparedStatement有什么区别?哪个性能更好?"></a>28.Statement和PreparedStatement有什么区别?哪个性能更好?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;与Statement相比,PreparedStatement接口代表预编译的语句,它主要的优势在于可以减少SQL的编译错误并增加SQL的安全性(减少SQL注射攻击的可能性);PreparedStatement中的SQL语句是带参数的,避免了用字符串连接拼接SQL语句的麻烦和不安全;当批量处理SQL或频繁执行相同的查询时,PreparedStatement有明显的性能上的优势,由于数据库可以将编译优化后的SQL语句缓存起来,下次执行相同接口的语句时就会很快(不用再次编译和生成执行计划).   </p>
+<h3 id="29-什么是DAO模式"><a href="#29-什么是DAO模式" class="headerlink" title="29.什么是DAO模式?"></a>29.什么是DAO模式?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;DAO(Data Access Object)顾名思义就是一个为数据库或其他持久机制提供了抽象接口的对象,在不暴露底层持久化方案实现细节的前提下提供可各种数据访问操作.DAO模式实际上包含了两个模式,一是Data Accessor(数据访问器),二是Data Object(数据对象),前者要解决如何访问数据的问题,而后者要解决的是如何用对象封装数据.  </p>
+<h3 id="30-事务的ACID是指什么"><a href="#30-事务的ACID是指什么" class="headerlink" title="30.事务的ACID是指什么?"></a>30.事务的ACID是指什么?</h3><ul>
+<li>原子性(Atomic):事务中各项操作,要么全做要么全不做,任何意向操作的失败都会导致整个事务的失败;</li>
+<li>一致性(Consistent):事务结束后系统状态是一致的;</li>
+<li>隔离性(Isolated):并发执行的事务彼此无法看到对方的中间状态;</li>
+<li>持久性(Durable):事务完成后所做的改动都会被持久化,即使发生灾难性的失败,通过日志和同步备份可以在故障发生后重建数据.  </li>
+</ul>
+<h3 id="31-简述equals-和”-”"><a href="#31-简述equals-和”-”" class="headerlink" title="31.简述equals()和”==”?"></a>31.简述equals()和”==”?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;java程序中测试两个变量是否相等有两种方式:一种是利用==运算符,另一种是利用equlas()方法,当使用==来判断两个变量是否相等时,如果两个变量是基本类型变量,且都是基本数值类型(不一定要求数据类型严格相同),则只要两个变量的值相等,就将返回true.<br>&nbsp;&nbsp;&nbsp;&nbsp;但对于两个引用类型变量,只有它们指向同一个对象时,==判断才会返回true, ==不可用于比较类型上没有父子关系的两个对象.<br>&nbsp;&nbsp;&nbsp;&nbsp;String已经重写了Object的()方法,String的equals()方法判断两个个字符串相等的标准是:只要两个字符串所包含的字符序列相同,通过equals()比较将返回true,否则将返回false.<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>注:</strong>对初学者来说,String还有一个非常容易迷惑的地方:”hello”直接量和new String(“hello”)有什么区别呢?当java程序直接使用形如”hello”的字符串直接量(包括可以在编译时就计算出来的字符串值)时,JVM将会使用常量池来管理这些字符串;当使用new String(“hello”)时,JVM会先使用常内存中,换句话说,new String(“hello”)一共产生了两个字符串对象.<br>通常而言,正确的重写equals()方法应该满足下列条件:<br>&nbsp;&nbsp;&nbsp;&nbsp;1.自反性:对任意x,x.equals(x)一定返回true.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.对称性:对任意的x和y,如果y.equals(x)返回true,则x.equals(y)也返回true.<br>&nbsp;&nbsp;&nbsp;&nbsp;3.传递性:对任意x,y,z,如果x.equals(y)返回true,y.equals(z)返回true,则x.equals(z)一定返回true.<br>&nbsp;&nbsp;&nbsp;&nbsp;4.一致性:对任意的x和y,如果对象中用于等价比较的信息没有改变,那么无论调用x.equals(y)多少次,返回的结果要么一致是true,要么一直是false.<br>&nbsp;&nbsp;&nbsp;&nbsp;5.d对任何不是null的x,x.equals(null)一定返回false.  </p>
+<h3 id="32-简述java程序初始化的执行顺序"><a href="#32-简述java程序初始化的执行顺序" class="headerlink" title="32.简述java程序初始化的执行顺序?"></a>32.简述java程序初始化的执行顺序?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;执行顺序:父类静态变量-&gt;父类静态代码块-&gt;子列静态变量-&gt;子列静态代码块-&gt;父类非静态变量-&gt;父类非静态代码块-&gt;父类构造函数-&gt;子类非静态变量-&gt;子类非静态代码块-&gt;子类构造函数  </p>
+<h3 id="33-普通方法是否可以与构造函数有相同的方法名"><a href="#33-普通方法是否可以与构造函数有相同的方法名" class="headerlink" title="33.普通方法是否可以与构造函数有相同的方法名?"></a>33.普通方法是否可以与构造函数有相同的方法名?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;可以.  </p>
+<h3 id="34-java中clone-方法的步骤"><a href="#34-java中clone-方法的步骤" class="headerlink" title="34.java中clone()方法的步骤?"></a>34.java中clone()方法的步骤?</h3><p>1.实现clone的类首先需要继承Cloneable接口,Cloneable接口实质上是一个标识接口,没有任何接口方法.<br>2.在类中重写Object类中的clone()方法.<br>3.在clone方法中调用super.clone().无论clone类的继承接口是什么,super.clone()都会直接或间接调用java.lang.Object类的clone()方法.<br>4.把浅复制的引用指向原型对象新的克隆体.<br><strong>注:</strong>1.当类中只有一些基本的数据类型时,采用上述方法就可以,但是当类中包含了一些对象时,就需要用到深复制了,实现方式是在<br>对对象调用clone()方法完成复制后,接着对对象中的非基本类型的属性也调用clone()方法完成深复制.<br>2.clone()方法的保护机制在Object中clone()是被声明为protected的.</p>
+<h3 id="35-浅复制和深复制有什么区别"><a href="#35-浅复制和深复制有什么区别" class="headerlink" title="35.浅复制和深复制有什么区别?"></a>35.浅复制和深复制有什么区别?</h3><p><strong>浅复制(Shallow Clone):</strong>被复制对象的所有变量都含有与原来对象相同的值,而所有对其他对象的引用仍然指向原来的对象,换言之,浅复制仅仅复制所考虑的对象,而不复制它所引用的对象.<br><strong>深复制(Deep Clone):</strong>被复制对象的所有变量都含有与原来对象相同的值,除去那些引用其他对象的变量,而不再是原有的那些被引用的对象,换言之,深复制把复制的对象所引用的对象都复制了一遍.  </p>
+<h3 id="36-java创建对象的方式有几种"><a href="#36-java创建对象的方式有几种" class="headerlink" title="36.java创建对象的方式有几种?"></a>36.java创建对象的方式有几种?</h3><p>1.通过new实例化一个对象.<br>2.通过反射机制创建对象.<br>3.通过clone()方法创建一个对象.<br>4.通过反序列化的方式创建对象.  </p>
+<h3 id="37-回调函数"><a href="#37-回调函数" class="headerlink" title="37.回调函数?"></a>37.回调函数?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;回调函数就是指函数在某处注册,而它将在稍后某个需要的时候被调用,在Windows系统中,开发人员想让系统动态链接库(Dynamic Link Library,DDL)调用自己编写的一个方法,于是利用DLL当中回调函数的接口来编写程序,通过传递一个函数的指针来调用,这个过程就称为回调.<br><strong>注:</strong>在java语言中没有指针的概念,那么如何才能在java语言中实现类似于函数指针的功能?可以利用接口与类来实现相同的效果,具体而言,应先定义一个接口,然后在接口中声明要调用的方法,接着实现这个接口,最后把这个实现类的一个对象作为参数传递给调用程序,调用程序通过这个参数来调用指定的函数,从而实现回调函数的功能.  </p>
+<h3 id="38-简述四个内部类"><a href="#38-简述四个内部类" class="headerlink" title="38.简述四个内部类."></a>38.简述四个内部类.</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;<strong>静态内部类:</strong>是指被声明为static的内部类,它可以不依赖于外部类实例而被实例化,而通常的内部类需要在外部类实例化后才能实例化,静态内部类不能与外部类有相同的名字,不能访问外部类的普通成员变量,只能访问外部类中的静态成员和静态方法(包括私有类型).<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>成员内部类:</strong> 可以自由的引用外部类的属性和方法,无论这些属性和方法是静态的还是非静态的,但是它与一个实例绑定在了一起,不可以定义静态的属性和方法,只有在外部类被实例化后,这个内部类才能被实例化.<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>局部内部类:</strong>指的是定义在一个代码块中的类,它的作用范围为其所在的代码块,是内部类中最少使用到的一种类型,局部内部类像局部变量一样,不能被public,protected,private以及static修饰,只能访问方法中定义为final类型的局部变量.<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>匿名内部类:</strong>是一种没有类名的内部类,不使用关键字class,extends,implements,没有构造函数,它必须继承其他类或实现其他接口,匿名内部类的好处是代码更加简洁,紧凑,但带来的问题是易读性下降,它一般应用于GUI(图形用户界面)编程中实现事件处理.在使用匿名内部时,需要牢记以下几个原则:<br>1.匿名内部类不能有构造函数.<br>2.匿名内部类不能定义静态成员,方法和类.<br>3.匿名内部类不能是public,protected,private,static.<br>4.只能创建匿名内部类的一个实例.<br>5.一个匿名内部类一定是在new的后面,这个匿名内部类必须继承一个父类或实现一个接口.<br>6.因为匿名内部类为局部内部类,所以局部内部类的所有限制都对其生效.  </p>
+<h3 id="39-简述什么是实例变量-什么是局部变量-什么是类变量-什么是final变量"><a href="#39-简述什么是实例变量-什么是局部变量-什么是类变量-什么是final变量" class="headerlink" title="39.简述什么是实例变量,什么是局部变量,什么是类变量,什么是final变量?"></a>39.简述什么是实例变量,什么是局部变量,什么是类变量,什么是final变量?</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;实例变量:变量归对象所有(只有在实例化对象后猜可以).每当实例化一个对象时,会创建一个副本并初始化,如果没有显示初始化,那么会初始化一在个默认值.各个对象中的实例变量互不影响.<br>&nbsp;&nbsp;&nbsp;&nbsp;局部变量:方法中定义的变量,在使用钱必须初始化.<br>&nbsp;&nbsp;&nbsp;&nbsp;类变量:用static修饰的属性,变量归类所有,只要类被加载,这个变量就可以被使用(类名.变量名).所以实例化的对象共享类变量.  </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://res.cloudinary.com/fireworks/image/upload/v1535525029/qrcode_for_gh_5dcb454905a4_258_1_zyzxhu.jpg" alt="花姐 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的二维码，订阅我的微信公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的赞赏是对我最大的支持！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://res.cloudinary.com/fireworks/image/upload/v1535524604/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180829143622_kzfr3k.jpg" alt="花姐 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/22/Java-EE-开发模式/" rel="next" title="Java EE开发模式">
+                <i class="fa fa-chevron-left"></i> Java EE开发模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/22/java面试题三/" rel="prev" title="java面试题三">
+                java面试题三 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://res.cloudinary.com/fireworks/image/upload/v1535524128/699780080297606004_glfn2f.jpg"
+                alt="花姐" />
+            
+              <p class="site-author-name" itemprop="name">花姐</p>
+              <p class="site-description motion-element" itemprop="description">一份阅读,一份支持！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fireworksflower" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/kbh528202" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-globe"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-List-Set-Map是否继承自Collection接口"><span class="nav-number">1.</span> <span class="nav-text">1.List,Set,Map是否继承自Collection接口?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-阐述ArrayList-Vector-LinkedList的存储性能和特性"><span class="nav-number">2.</span> <span class="nav-text">2.阐述ArrayList,Vector,LinkedList的存储性能和特性.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Collection和Collections的区别"><span class="nav-number">3.</span> <span class="nav-text">3.Collection和Collections的区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-List-Map-Set三个接口存储元素时-各有什么特点"><span class="nav-number">4.</span> <span class="nav-text">4.List,Map,Set三个接口存储元素时,各有什么特点?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Thread类的sleep-方法和yield-方法的区别如下"><span class="nav-number">5.</span> <span class="nav-text">5.Thread类的sleep()方法和yield()方法的区别如下.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-HashSet具有什么特点"><span class="nav-number">6.</span> <span class="nav-text">6.HashSet具有什么特点?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-简述并发性和并行性"><span class="nav-number">7.</span> <span class="nav-text">7.简述并发性和并行性?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-进程和线程的区别"><span class="nav-number">8.</span> <span class="nav-text">8.进程和线程的区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-创建线程的三种方式对比"><span class="nav-number">9.</span> <span class="nav-text">9.创建线程的三种方式对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-简述获取Class对象的方法"><span class="nav-number">10.</span> <span class="nav-text">10.简述获取Class对象的方法?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-简述通过反射生成对象的方式"><span class="nav-number">11.</span> <span class="nav-text">11.简述通过反射生成对象的方式?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-现有三个类-Root-Mid和Leaf-这三个类都提供了静态初始化块和普通初始化块-构造函数-简述每个方法的执行顺序"><span class="nav-number">12.</span> <span class="nav-text">12.现有三个类:Root,Mid和Leaf,这三个类都提供了静态初始化块和普通初始化块,构造函数,简述每个方法的执行顺序?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-简述Error和Exception的区别和关系"><span class="nav-number">13.</span> <span class="nav-text">13.简述Error和Exception的区别和关系.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-checked异常和runtime异常的区别"><span class="nav-number">14.</span> <span class="nav-text">14.checked异常和runtime异常的区别.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-finally中的代码一定会执行吗"><span class="nav-number">15.</span> <span class="nav-text">15.finally中的代码一定会执行吗?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-throw和throws的区别"><span class="nav-number">16.</span> <span class="nav-text">16.throw和throws的区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-列举5个常见的Runtime异常类"><span class="nav-number">17.</span> <span class="nav-text">17.列举5个常见的Runtime异常类.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-说说HashMap和HashTable的区别"><span class="nav-number">18.</span> <span class="nav-text">18.说说HashMap和HashTable的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-TreeMap和TreeSet在排序时如何比较元素-Collections工具类中的sort-方法如何比较元素"><span class="nav-number">19.</span> <span class="nav-text">19.TreeMap和TreeSet在排序时如何比较元素?Collections工具类中的sort()方法如何比较元素?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-方法和对象的wait-方法都可以让线程暂停执行-它们有什么区别"><span class="nav-number">20.</span> <span class="nav-text">20.()方法和对象的wait()方法都可以让线程暂停执行,它们有什么区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-当一个线程进入一个对象的synchronized方法A之后-其他线程是否可进入此对象的synchronized方法B"><span class="nav-number">21.</span> <span class="nav-text">21.当一个线程进入一个对象的synchronized方法A之后,其他线程是否可进入此对象的synchronized方法B?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-请说出与线程同步以及线程调度相关的方法"><span class="nav-number">22.</span> <span class="nav-text">22.请说出与线程同步以及线程调度相关的方法?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-举例说明同步和异步"><span class="nav-number">23.</span> <span class="nav-text">23.举例说明同步和异步.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-方法还是start-方法"><span class="nav-number">24.</span> <span class="nav-text">24.()方法还是start()方法?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-什么是线程池"><span class="nav-number">25.</span> <span class="nav-text">25.什么是线程池?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-简述synchronized和java-util-concurrent-locksLock的异同"><span class="nav-number">26.</span> <span class="nav-text">26.简述synchronized和java.util.concurrent.locksLock的异同.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-java中有集中类型的流"><span class="nav-number">27.</span> <span class="nav-text">27.java中有集中类型的流?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-Statement和PreparedStatement有什么区别-哪个性能更好"><span class="nav-number">28.</span> <span class="nav-text">28.Statement和PreparedStatement有什么区别?哪个性能更好?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-什么是DAO模式"><span class="nav-number">29.</span> <span class="nav-text">29.什么是DAO模式?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-事务的ACID是指什么"><span class="nav-number">30.</span> <span class="nav-text">30.事务的ACID是指什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-简述equals-和”-”"><span class="nav-number">31.</span> <span class="nav-text">31.简述equals()和”==”?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-简述java程序初始化的执行顺序"><span class="nav-number">32.</span> <span class="nav-text">32.简述java程序初始化的执行顺序?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-普通方法是否可以与构造函数有相同的方法名"><span class="nav-number">33.</span> <span class="nav-text">33.普通方法是否可以与构造函数有相同的方法名?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-java中clone-方法的步骤"><span class="nav-number">34.</span> <span class="nav-text">34.java中clone()方法的步骤?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-浅复制和深复制有什么区别"><span class="nav-number">35.</span> <span class="nav-text">35.浅复制和深复制有什么区别?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36-java创建对象的方式有几种"><span class="nav-number">36.</span> <span class="nav-text">36.java创建对象的方式有几种?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-回调函数"><span class="nav-number">37.</span> <span class="nav-text">37.回调函数?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-简述四个内部类"><span class="nav-number">38.</span> <span class="nav-text">38.简述四个内部类.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-简述什么是实例变量-什么是局部变量-什么是类变量-什么是final变量"><span class="nav-number">39.</span> <span class="nav-text">39.简述什么是实例变量,什么是局部变量,什么是类变量,什么是final变量?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花姐</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+ 
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% e
+</body>
+</html>
