@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mysql," />
+  <meta name="keywords" content="java,jvm," />
 
 
 
@@ -79,18 +79,21 @@
 
 
 
-<meta name="description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
-<meta name="keywords" content="mysql">
+<meta name="description" content="一．类加载1.类加载的过程加载-&amp;gt;验证-&amp;gt;准备-&amp;gt;解析-&amp;gt;初始化-&amp;gt;使用-&amp;gt;卸载2.双亲委派模型1).启动类加载器Bootstrap ClassLoader（此处标为A）,扩展类加载器Extension ClassLoader（此处标为B）,继承A,应用程序类加载器Application ClassLoader(此处标为C),继承B,自定义类加载器User Cl">
+<meta name="keywords" content="java,jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql练习">
-<meta property="og:url" content="http://yoursite.com/2018/04/22/mysql练习/index.html">
+<meta property="og:title" content="jvm">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/jvm/index.html">
 <meta property="og:site_name" content="花姐学编程">
-<meta property="og:description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
+<meta property="og:description" content="一．类加载1.类加载的过程加载-&amp;gt;验证-&amp;gt;准备-&amp;gt;解析-&amp;gt;初始化-&amp;gt;使用-&amp;gt;卸载2.双亲委派模型1).启动类加载器Bootstrap ClassLoader（此处标为A）,扩展类加载器Extension ClassLoader（此处标为B）,继承A,应用程序类加载器Application ClassLoader(此处标为C),继承B,自定义类加载器User Cl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T09:14:08.057Z">
+<meta property="og:image" content="http://res.cloudinary.com/fireworks/image/upload/v1535633119/VM_options_wkldfe.png">
+<meta property="og:image" content="http://res.cloudinary.com/fireworks/image/upload/v1535633223/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C_um9iti.png">
+<meta property="og:updated_time" content="2018-08-30T12:55:47.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sql练习">
-<meta name="twitter:description" content="sql练习创建数据库create database dbexecise;切换到dbexecise数据库use dbexecise;创建部门表12345678create table dept(	#部门编号	deptno int primary key,		#部门名称	deptname varchar(50),		# 部门位置		loc varchar(50)				); 部门表插入语句1234IN">
+<meta name="twitter:title" content="jvm">
+<meta name="twitter:description" content="一．类加载1.类加载的过程加载-&amp;gt;验证-&amp;gt;准备-&amp;gt;解析-&amp;gt;初始化-&amp;gt;使用-&amp;gt;卸载2.双亲委派模型1).启动类加载器Bootstrap ClassLoader（此处标为A）,扩展类加载器Extension ClassLoader（此处标为B）,继承A,应用程序类加载器Application ClassLoader(此处标为C),继承B,自定义类加载器User Cl">
+<meta name="twitter:image" content="http://res.cloudinary.com/fireworks/image/upload/v1535633119/VM_options_wkldfe.png">
 
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/22/mysql练习/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/30/jvm/"/>
 
 
 
 
 
-  <title>sql练习 | 花姐学编程</title>
+  <title>jvm | 花姐学编程</title>
   
 
 
@@ -253,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/22/mysql练习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/30/jvm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="花姐">
@@ -270,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sql练习</h1>
+          <h1 class="post-title" itemprop="name headline">jvm</h1>
         
 
         <div class="post-meta">
@@ -282,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-22T13:19:55+08:00">
-                2018-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-30T20:49:45+08:00">
+                2018-08-30
               </time>
             
 
@@ -305,8 +308,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -342,31 +345,13 @@
       
 
       
-        <h3 id="sql练习"><a href="#sql练习" class="headerlink" title="sql练习"></a>sql练习</h3><p><strong>创建数据库</strong><br><code>create database dbexecise;</code><br><strong>切换到dbexecise数据库</strong><br><code>use dbexecise;</code><br><strong>创建部门表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">create table dept(</span><br><span class="line">	#部门编号</span><br><span class="line">	deptno int primary key,	</span><br><span class="line">	#部门名称</span><br><span class="line">	deptname varchar(50),	</span><br><span class="line">	# 部门位置	</span><br><span class="line">	loc varchar(50)				</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p><strong>部门表插入语句</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `dept` VALUES (&apos;10&apos;, &apos;会计部&apos;, &apos;北京&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;20&apos;, &apos;调查部&apos;, &apos;杭州&apos;);  </span><br><span class="line">INSERT INTO `dept` VALUES (&apos;30&apos;, &apos;销售部&apos;, &apos;上海&apos;);</span><br><span class="line">INSERT INTO `dept` VALUES (&apos;40&apos;, &apos;营销部&apos;, &apos;深圳&apos;);</span><br></pre></td></tr></table></figure></p>
-<p><strong>创建员工表</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">create table emp(	</span><br><span class="line">	#员工编号			</span><br><span class="line">	empno int primary key,	</span><br><span class="line">	#员工姓名	 </span><br><span class="line">	empname varchar(50),</span><br><span class="line">	#职位		</span><br><span class="line">	job varchar(50),	</span><br><span class="line">	#直属上级	</span><br><span class="line">	mgr int,</span><br><span class="line">	#受雇日期					</span><br><span class="line">	hiredate date,		</span><br><span class="line">	#薪资		</span><br><span class="line">	sal int,	</span><br><span class="line">	#奖金				</span><br><span class="line">	comm int,</span><br><span class="line">    #所在部门编号</span><br><span class="line">	deptno int,	</span><br><span class="line">	#外键				 </span><br><span class="line">	foreign key(deptno) references dept(deptno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p><strong>员工表插入数据</strong></p>
-<pre><code>INSERT INTO `emp` VALUES (&apos;7369&apos;, &apos;张无忌&apos;, &apos;办事员&apos;, &apos;7902&apos;, &apos;1980-12-17&apos;, &apos;800&apos;, null, &apos;20&apos;);
-INSERT INTO `emp` VALUES (&apos;7499&apos;, &apos;曹操&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-20&apos;, &apos;1600&apos;, &apos;300&apos;, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7521&apos;, &apos;杨志&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-02-22&apos;, &apos;1250&apos;, &apos;500&apos;, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7566&apos;, &apos;朱元璋&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-04-02&apos;, &apos;2975&apos;, null, &apos;20&apos;);
-INSERT INTO `emp` VALUES (&apos;7654&apos;, &apos;殷天正&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-28&apos;, &apos;1250&apos;, &apos;1400&apos;, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7698&apos;, &apos;张三丰&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-05-01&apos;, &apos;2850&apos;, null, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7782&apos;, &apos;关羽&apos;, &apos;经理&apos;, &apos;7839&apos;, &apos;1981-06-09&apos;, &apos;2450&apos;, null, &apos;10&apos;);
-INSERT INTO `emp` VALUES (&apos;7788&apos;, &apos;宋江&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1987-04-19&apos;, &apos;3000&apos;, null, &apos;20&apos;);
-INSERT INTO `emp` VALUES (&apos;7839&apos;, &apos;韩少云&apos;, &apos;董事长&apos;, null, &apos;1981-11-17&apos;, &apos;5000&apos;, null, &apos;10&apos;);
-INSERT INTO `emp` VALUES (&apos;7844&apos;, &apos;孙二娘&apos;, &apos;推销员&apos;, &apos;7698&apos;, &apos;1981-09-08&apos;, &apos;1500&apos;, &apos;0&apos;, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7876&apos;, &apos;张飞&apos;, &apos;办事员&apos;, &apos;7788&apos;, &apos;1987-05-23&apos;, &apos;1100&apos;, null, &apos;20&apos;);
-INSERT INTO `emp` VALUES (&apos;7900&apos;, &apos;赵云&apos;, &apos;办事员&apos;, &apos;7698&apos;, &apos;1981-12-03&apos;, &apos;950&apos;, null, &apos;30&apos;);
-INSERT INTO `emp` VALUES (&apos;7902&apos;, &apos;诸葛亮&apos;, &apos;分析员&apos;, &apos;7566&apos;, &apos;1981-12-03&apos;, &apos;3000&apos;, null, &apos;20&apos;);
-INSERT INTO `emp` VALUES (&apos;7934&apos;, &apos;夏侯惇&apos;, &apos;办事员&apos;, &apos;7782&apos;, &apos;1982-01-23&apos;, &apos;1300&apos;, null, &apos;10&apos;);
-</code></pre><p>###查询语句<br><strong>1.列出部门名称和这些部门的员工信息,同时列出那些没有员工的部门</strong><br><code>select deptname, empname, empno, emp.deptno from dept left join emp on emp.deptno=dept.deptno;</code><br><strong>2.列出薪资比关羽高的所有员工.</strong><br>1).查询出关羽的薪资<br><code>select sal from emp where empname=&#39;关羽&#39;</code><br>2).查询出比关羽薪资高的员工<br><code>select empno,empname,sal from emp where sal&gt;( SELECT sal from emp where empname=&#39;关羽&#39;);</code><br><strong>3.列出所有员工的姓名及其直接上级的姓名</strong><br>1).查询员工<br><code>select empno,mgr from emp e1;</code><br>2).查询员工的上级<br><code>select empno,empname from emp e2;</code><br>3).关联查询,查询出员工及员工对应的上级<br><code>select e1.empname,e2.empname from emp e1,emp e2 where e1.mgr = e2.empno;</code><br><strong>4.列出最低薪资大于1500的各种职位及其从事此职位的员工人数</strong><br>1).查询出各种职位的最低薪资<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal);</code><br>2).查询出最低薪资&gt;1500的职位<br><code>select job, min(sal) 最低薪资 from emp group by job having min(sal)&gt;1500;</code><br>3).查询出每个职位对应的员工人数<br><code>select job, min(sal) 最低薪资, count(*) 员工人数 from emp group by job having min(sal)&gt;1500;</code><br><strong>5.列出在销售部职位的员工姓名,假定不知道销售部的部门编号</strong><br>1).查询出销售部的部门编号<br><code>select deptno from dept where deptname=&#39;销售部&#39;;</code><br>2).查询出在销售部职位的员工姓名<br><code>select empname from emp where deptno=(select deptno from dept where deptname=&#39;销售部&#39;);</code><br><strong>6.列出与曹操从事相同职位的所有员工及部门名称</strong><br>1).查询出曹操从事的职位及部门编号<br><code>select job,deptno from emp where empname=&#39;曹操&#39;;</code><br>2).查询出与曹操从事相同职位的所有员工<br><code>select empname,deptno from emp where job=(select job from emp where empname=&#39;曹操&#39;);</code><br>3).查询出与曹操从事相同职位的所有员工及部门名称<br><code>select deptname,empname from dept,(select empname,deptno from emp  where job=(select job from emp where empname=&#39;曹操&#39;))e2 where dept.deptno=e2.deptno;</code><br><strong>7.列出薪资高于销售部(已知编号为30)就职的所有员工的薪资的员工姓名和薪资,部门名称</strong><br>1).查出在销售部就职的所有员工最高薪资<br><code>select max(sal) from emp where deptno=30;</code><br>2).关联查询, 查询员工的姓名,薪资, 部门名称<br><code>select e.empname,e.sal,d.deptname from emp e,dept d where e.deptno=d.deptno and sal&gt;(select max(sal) from emp where deptno=30);</code><br><strong>8.列出在每个部门职位的员工数量、平均工资。</strong><br><code>select count(*),avg(sal) from emp group by deptno;</code><br><strong>9.查出至少有一个员工的部门。显示部门人数、部门编号、部门名称、部门位置.</strong><br>1).查询出每个部门员工数量<br><code>select count(*),deptno from emp group by deptno;</code><br>2).关联查询,查询出部门编号、部门名称、部门位置<br><code>select i.c,d.deptname,d.loc,d.deptno from dept d,(select count(*) c,deptno from emp group by deptno)i  where i.deptno=d.deptno and i.c&gt;=1;</code><br><strong>10.列出受雇日期早于直接上级的所有员工的编号,姓名,部门名称</strong><br><code>select e1.empname, e1.empno, d.deptname from emp e1, emp e2, dept d where e1.deptno=d.deptno and e1.mgr=e2.empno and e1.hiredate &lt; e2.hiredate;</code><br><strong>11.列出所有职员的姓名及其部门名称，部门的人数。</strong><br><code>select t.empname, t.deptname, e.cnt 员工数量  from 
-(
-    select e.empname, e.deptno, d.deptname from emp e, dept d where e.deptno=d.deptno
-) t, (
-    select deptno, count(*) cnt from emp group by deptno
-) e
-where t.deptno = e.deptno;</code></p>
+        <p>一．类加载<br>1.类加载的过程<br>加载-&gt;验证-&gt;准备-&gt;解析-&gt;初始化-&gt;使用-&gt;卸载<br>2.双亲委派模型<br>1).启动类加载器Bootstrap ClassLoader（此处标为A）,扩展类加载器Extension ClassLoader（此处标为B）,继承A,应用程序类加载器Application ClassLoader(此处标为C),继承B,自定义类加载器User ClassLoader（此处标为D）,继承C<br>2).双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应当有自己的父类加载器，这里类加载之间的父子关系一般不会以继承的关系来实现，而是都是使用组合关系来复用父加载器的代码.<br>3).双亲委派加载模型的工作特点是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有父类加载器反馈自己无法完成这个加载请求（它的搜索范围内没有找到所需的类）时，子加载器才会尝试自己去加载。<br>二．Java内存区域<br>1.程序计数器：是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。<br>在java虚拟机的多线程中，一个处理器只会执行一条线程中的指令，因此，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。<br>2.虚拟机栈：与程序计数器一样，Java虚拟机栈也是线程私有的，它的生命周期与线程相同。每个方法被执行的时候都会创建一个栈帧用于存储局部变量表，操作栈，动态链接，方法出口等信息，每个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
+<p>在java虚拟机规范中，对这个区域规定了两种异常状态，如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请足够的内存时会抛出OutOfMemoryError异常。<br>3.本地方法栈：本地方法栈与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的Native方法服务，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。<br>4.Java堆<br>对于大多数应用来说，Java堆是java虚拟机所管理的内存中最大的一块，Java堆是被所有线程共享的一块内训区域，在虚拟机启动时创建，此内存区域唯一的目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</p>
+<p>Java堆是垃圾收集器管理的主要区域，因此很多时候也被称为“GC堆”。<br>5.方法区：方法区与java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息，常量，静态常量，即时编译器编译后的代码等数据，虽然Java虚拟机规范把方法区描述为堆的一个逻辑，但是它却又一个别名叫做Non-Heap(非堆)，目的应该是与Java堆区分开。</p>
+<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集，另外，在Java堆中还必须包含能查找到此对象类型数据（如对象类型，父类，实现的接口，方法等）的地址信息，这些类型数据则存储在方法区中。</p>
+<p>当方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常。<br>6.运行时常量池<br>运行时常量池是方法区的一部分，Class文件中除了累的版本，字段，方法，接口等描述等信息外，还有一项信息是常量池用于存放编译器生成的各种字面量和符号引用，，这部分内容将在类加载后存放到方法区的运行时常量池中。</p>
+<p>下面是一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class HeapOOM &#123;</span><br><span class="line">    static class OOMObject&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        List&lt;OOMObject&gt; list = new ArrayList&lt;OOMObject&gt;();</span><br><span class="line">        while(true)&#123;</span><br><span class="line">            list.add(new OOMObject());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置VM options<br><img src="http://res.cloudinary.com/fireworks/image/upload/v1535633119/VM_options_wkldfe.png" alt="VM options"><br>运行结果如下图：<br><img src="http://res.cloudinary.com/fireworks/image/upload/v1535633223/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C_um9iti.png" alt="运行结果"></p>
 
       
     </div>
@@ -416,7 +401,9 @@ where t.deptno = e.deptno;</code></p>
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/jvm/" rel="tag"># jvm</a>
           
         </div>
       
@@ -429,8 +416,8 @@ where t.deptno = e.deptno;</code></p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/22/MYSQL和Oracle的区别/" rel="next" title="MYSQL和Oracle的区别">
-                <i class="fa fa-chevron-left"></i> MYSQL和Oracle的区别
+              <a href="/2018/08/29/Java虚拟机的内存组成以及堆内存/" rel="next" title="'Java虚拟机的内存组成以及堆内存'">
+                <i class="fa fa-chevron-left"></i> 'Java虚拟机的内存组成以及堆内存'
               </a>
             
           </div>
@@ -438,10 +425,6 @@ where t.deptno = e.deptno;</code></p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/22/Redis/" rel="prev" title="Redis">
-                Redis <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,17 +476,8 @@ where t.deptno = e.deptno;</code></p>
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -583,22 +557,6 @@ where t.deptno = e.deptno;</code></p>
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql练习"><span class="nav-number">1.</span> <span class="nav-text">sql练习</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
